@@ -155,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
             rnd = random.nextInt(5);
             SoruCevap();
 
+            //sd
         }
         else{
 
