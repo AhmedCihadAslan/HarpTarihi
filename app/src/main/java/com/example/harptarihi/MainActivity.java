@@ -2,6 +2,7 @@ package com.example.harptarihi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,11 +18,24 @@ public class MainActivity extends AppCompatActivity {
     TextView textView3;
     TextView textView4;
     TextView textView5;
+
+    Button button;
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
+    Button button5;
+    Button button6;
+
+    Sorularvecevaplar cagır;
+
     Random random;
     int aynısoru;
     int rnd;
     String Sorular [];
     String cevap [];
+
+     //**************************************************************************************************
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,30 +47,48 @@ public class MainActivity extends AppCompatActivity {
         textView3 = findViewById(R.id.textView3);
         textView4 = findViewById(R.id.textView4);
         textView5 = findViewById(R.id.textView5);
-        random = new Random();
-        rnd = random.nextInt(5);
 
-         SoruCevap();
+        button = findViewById(R.id.button);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
+        button6 = findViewById(R.id.button6);
+
+         cagır = new Sorularvecevaplar();
+
+
+        random = new Random();
+        rnd = random.nextInt(6);
+
+            SoruCevap();
 
 
 
     }
 
+    //**************************************************************************************************
+
     public void SoruCevap(){
 
 
+     Sorular  = new String[6];
+      cevap = new String [24];
 
-      aynısoru = rnd;
 
-      Sorular  = new String[5];
-        Sorular [0] = "kaç yasındasınız";
-        Sorular [1] = "Turkıyenın kurucusu kımdır";
-        Sorular [2] = "İstanbulu kım fethetmıstır";
-        Sorular [3] = "pi sayısı kactır";
-        Sorular [4] = "Selcuklunun kurucusu kımdır";
+        cagır.SetCevaplar(cevap);
+        cagır.SetSorular(Sorular);
 
-      cevap = new String[] {"12","15","22","23","Osman gazı","Ataturk","Ismet ınonu","Adnan menderes","Fatıh","Metehan","Halıd bın velıd","Tansuhan","3,14","5","6","2,85",
-              "Tugrul bey","Nasuh efendı","Aslıcan Hatun","Semrahan"};
+        cagır.SorularveCevaplar();
+
+
+        if(aynısoru == rnd) {
+
+            rnd = random.nextInt(6);
+        }
+
+        aynısoru = rnd;
 
 
       int i = 0;
@@ -93,30 +125,28 @@ public class MainActivity extends AppCompatActivity {
           }
 
 
-
-
-
       }
-
-
-
-
-
-
 
 
 
     }
 
 
+
+    //**************************************************************************************************
+
+
     public void A(View view){
 
         aynısoru = rnd;
-        rnd = random.nextInt(5);
+        rnd = random.nextInt(6);
+
+        button1.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(5);
+            rnd = random.nextInt(6);
             SoruCevap();
 
         }else{
@@ -125,17 +155,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        SoruCevap();
+
     }
+
+
+    //**************************************************************************************************
+
 
     public void B(View view){
 
         aynısoru = rnd;
-        rnd = random.nextInt(5);
+        rnd = random.nextInt(6);
+
+        button1.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(5);
+            rnd = random.nextInt(6);
             SoruCevap();
 
         }
@@ -144,42 +181,119 @@ public class MainActivity extends AppCompatActivity {
             SoruCevap();
         }
     }
+
+
+    //**************************************************************************************************
+
 
     public void C(View view){
 
         aynısoru = rnd;
-        rnd = random.nextInt(5);
+        rnd = random.nextInt(6);
+
+        button1.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(5);
+            rnd = random.nextInt(6);
             SoruCevap();
 
-            //sd
+
         }
         else{
 
             SoruCevap();
         }
     }
+
+
+    //**************************************************************************************************
+
+
     public void D(View view){
 
         aynısoru = rnd;
-        rnd = random.nextInt(5);
+        rnd = random.nextInt(6);
+
+        button1.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(5);
+            rnd = random.nextInt(6);
             SoruCevap();
 
         }
         else{
 
             SoruCevap();
+
         }
 
 
     }
+
+
+    //**************************************************************************************************
+
+
+
+    public void yarıyarıya(View view){
+
+
+
+            button.setVisibility(View.INVISIBLE);
+            button1.setVisibility(View.INVISIBLE);
+            button4.setVisibility(View.INVISIBLE);
+
+
+
+
+
+    }
+
+
+    public void degıstır(View view){
+
+        aynısoru = rnd;
+        rnd = random.nextInt(6);
+        button1.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+
+        if(aynısoru == rnd){
+
+            rnd = random.nextInt(6);
+            SoruCevap();
+
+            button5.setVisibility(View.INVISIBLE);
+
+        }
+        else{
+
+            SoruCevap();
+            button5.setVisibility(View.INVISIBLE);
+
+        }
+
+
+
+    }
+
+    public void cevabıgor(View view){
+
+
+        button4.setBackgroundColor(Color.parseColor("#66CC33"));
+        button6.setVisibility(View.INVISIBLE);
+        button1.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+
+
+    }
+
+
+
+
 
 
 }
