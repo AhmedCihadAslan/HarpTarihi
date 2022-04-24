@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     int rnd;
     String Sorular [];
     String cevap [];
+    int sorularSize;
 
      //**************************************************************************************************
 
@@ -66,20 +68,20 @@ public class MainActivity extends AppCompatActivity {
         Sorular2 = new ArrayList(6);
         Cevaplar2 = new ArrayList();
         random = new Random();
-        rnd = random.nextInt(6);
+
+        liste.SetSorulistesi(Sorular2);
+        liste.SetCevaplistesi(Cevaplar2);
+        liste.SoruCevap();
+        sorularSize = Sorular2.size();
+
+        rnd = random.nextInt(sorularSize);
 
         SoruCevap();
-
-        liste.SoruCevapSil(rnd);
-
-
     }
 
     //**************************************************************************************************
 
     public void SoruCevap(){
-
-
    /*   Sorular  = new String[6];
       cevap = new String [24];
 
@@ -89,19 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         cagır.SorularveCevaplar();  */
 
-
-
-        liste.SetSorulistesi(Sorular2);
-        liste.SetCevaplistesi(Cevaplar2);
-
-        liste.SoruCevap();
-
-
         if(aynısoru == rnd) {
-
-            rnd = random.nextInt(6);
-            liste.SoruCevapSil(rnd);
-
+            rnd = random.nextInt(sorularSize);
         }
 
         aynısoru = rnd;
@@ -142,10 +133,6 @@ public class MainActivity extends AppCompatActivity {
 
 
       }
-
-
-
-
     }
 
 
@@ -154,17 +141,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void A(View view){
+        if(Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
 
         aynısoru = rnd;
-        rnd = random.nextInt(6);
+        rnd = random.nextInt(sorularSize);
 
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(6);
-            liste.SoruCevapSil(rnd);
+            rnd = random.nextInt(sorularSize);
 
             SoruCevap();
 
@@ -172,9 +165,6 @@ public class MainActivity extends AppCompatActivity {
 
             SoruCevap();
         }
-
-
-
     }
 
 
@@ -182,17 +172,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void B(View view){
+        if(Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
 
         aynısoru = rnd;
-        rnd = random.nextInt(6);
+        rnd = random.nextInt(sorularSize);
 
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(6);
-            liste.SoruCevapSil(rnd);
+            rnd = random.nextInt(sorularSize);
 
             SoruCevap();
 
@@ -201,10 +197,6 @@ public class MainActivity extends AppCompatActivity {
 
             SoruCevap();
         }
-
-
-
-
     }
 
 
@@ -212,17 +204,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void C(View view){
+        if(Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
 
         aynısoru = rnd;
-        rnd = random.nextInt(6);
+        rnd = random.nextInt(sorularSize);
 
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(6);
-            liste.SoruCevapSil(rnd);
+            rnd = random.nextInt(sorularSize);
 
             SoruCevap();
 
@@ -232,9 +230,6 @@ public class MainActivity extends AppCompatActivity {
 
             SoruCevap();
         }
-
-
-
     }
 
 
@@ -242,17 +237,23 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void D(View view){
+        if(Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
 
         aynısoru = rnd;
-        rnd = random.nextInt(6);
+        rnd = random.nextInt(sorularSize);
 
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(6);
-            liste.SoruCevapSil(rnd);
+            rnd = random.nextInt(sorularSize);
 
             SoruCevap();
 
@@ -262,9 +263,6 @@ public class MainActivity extends AppCompatActivity {
             SoruCevap();
 
         }
-
-
-
     }
 
 
@@ -287,14 +285,14 @@ public class MainActivity extends AppCompatActivity {
     public void degıstır(View view){
 
         aynısoru = rnd;
-        rnd = random.nextInt(6);
+        rnd = random.nextInt(sorularSize);
 
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
         if(aynısoru == rnd){
 
-            rnd = random.nextInt(6);
+            rnd = random.nextInt(sorularSize);
             SoruCevap();
 
             button5.setVisibility(View.INVISIBLE);

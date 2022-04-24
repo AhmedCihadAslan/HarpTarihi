@@ -36,16 +36,11 @@ public class Sorucevaplist {
     }
 
     public void SoruCevapSil(int a){
-
-
         Sorulistesi.remove(a);
-        Cevaplistesi.remove(a*4);
-        Cevaplistesi.remove((a*4)+1);
-        Cevaplistesi.remove((a*4)+2);
         Cevaplistesi.remove((a*4)+3);
-
-
-
+        Cevaplistesi.remove((a*4)+2);
+        Cevaplistesi.remove((a*4)+1);
+        Cevaplistesi.remove(a*4);
     }
 
     public void SoruCevap(){
