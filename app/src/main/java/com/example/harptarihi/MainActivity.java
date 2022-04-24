@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +28,10 @@ public class MainActivity extends AppCompatActivity {
     Button button5;
     Button button6;
 
-    Sorularvecevaplar cagır;
+    Sorucevaplist liste;
+    //Sorularvecevaplar cagır;
+    ArrayList<String> Sorular2;
+    ArrayList<String> Cevaplar2;
 
     Random random;
     int aynısoru;
@@ -56,14 +60,17 @@ public class MainActivity extends AppCompatActivity {
         button5 = findViewById(R.id.button5);
         button6 = findViewById(R.id.button6);
 
-         cagır = new Sorularvecevaplar();
+      //   cagır = new Sorularvecevaplar();
 
-
+        liste = new Sorucevaplist();
+        Sorular2 = new ArrayList(6);
+        Cevaplar2 = new ArrayList();
         random = new Random();
         rnd = random.nextInt(6);
 
-            SoruCevap();
+        SoruCevap();
 
+        liste.SoruCevapSil(rnd);
 
 
     }
@@ -73,19 +80,28 @@ public class MainActivity extends AppCompatActivity {
     public void SoruCevap(){
 
 
-     Sorular  = new String[6];
+   /*   Sorular  = new String[6];
       cevap = new String [24];
 
 
         cagır.SetCevaplar(cevap);
         cagır.SetSorular(Sorular);
 
-        cagır.SorularveCevaplar();
+        cagır.SorularveCevaplar();  */
+
+
+
+        liste.SetSorulistesi(Sorular2);
+        liste.SetCevaplistesi(Cevaplar2);
+
+        liste.SoruCevap();
 
 
         if(aynısoru == rnd) {
 
             rnd = random.nextInt(6);
+            liste.SoruCevapSil(rnd);
+
         }
 
         aynısoru = rnd;
@@ -94,18 +110,18 @@ public class MainActivity extends AppCompatActivity {
       int i = 0;
 
 
-      while (i != Sorular.length+1){
+      while (i != Sorular2.size()+1){
 
           int a = i*4;
 
            if(i == rnd){
 
-             textView.setText(Sorular[i]);
+             textView.setText(Sorular2.get(i));
 
-              textView2.setText(cevap[a]);
-              textView3.setText(cevap[a+1]);
-              textView4.setText(cevap[a+2]);
-              textView5.setText(cevap[a+3]);
+              textView2.setText(Cevaplar2.get(a));
+              textView3.setText(Cevaplar2.get(a+1));
+              textView4.setText(Cevaplar2.get(a+2));
+              textView5.setText(Cevaplar2.get(a+3));
 
               break;
 
@@ -129,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
     }
 
 
@@ -147,6 +164,8 @@ public class MainActivity extends AppCompatActivity {
         if(aynısoru == rnd){
 
             rnd = random.nextInt(6);
+            liste.SoruCevapSil(rnd);
+
             SoruCevap();
 
         }else{
@@ -173,6 +192,8 @@ public class MainActivity extends AppCompatActivity {
         if(aynısoru == rnd){
 
             rnd = random.nextInt(6);
+            liste.SoruCevapSil(rnd);
+
             SoruCevap();
 
         }
@@ -180,6 +201,10 @@ public class MainActivity extends AppCompatActivity {
 
             SoruCevap();
         }
+
+
+
+
     }
 
 
@@ -197,6 +222,8 @@ public class MainActivity extends AppCompatActivity {
         if(aynısoru == rnd){
 
             rnd = random.nextInt(6);
+            liste.SoruCevapSil(rnd);
+
             SoruCevap();
 
 
@@ -205,6 +232,9 @@ public class MainActivity extends AppCompatActivity {
 
             SoruCevap();
         }
+
+
+
     }
 
 
@@ -222,6 +252,8 @@ public class MainActivity extends AppCompatActivity {
         if(aynısoru == rnd){
 
             rnd = random.nextInt(6);
+            liste.SoruCevapSil(rnd);
+
             SoruCevap();
 
         }
@@ -230,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
             SoruCevap();
 
         }
+
 
 
     }
@@ -248,9 +281,6 @@ public class MainActivity extends AppCompatActivity {
             button4.setVisibility(View.INVISIBLE);
 
 
-
-
-
     }
 
 
@@ -258,6 +288,7 @@ public class MainActivity extends AppCompatActivity {
 
         aynısoru = rnd;
         rnd = random.nextInt(6);
+
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 

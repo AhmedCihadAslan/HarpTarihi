@@ -1,6 +1,6 @@
 package com.example.harptarihi;
 
-public class Sorularvecevaplar {
+/*public class Sorularvecevaplar {
 
    public String Sorular [];
    public String Cevaplar [];
@@ -98,3 +98,4 @@ public class Sorularvecevaplar {
 
 
 }
+*/
