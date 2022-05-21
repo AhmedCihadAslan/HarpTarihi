@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity{
     //Sorularvecevaplar cagır;
     ArrayList<String> Sorular2;
     ArrayList<String> Cevaplar2;
+    ArrayList <String> Dogru;
 
     Random random;
     int aynısoru;
@@ -74,9 +75,12 @@ public class MainActivity extends AppCompatActivity{
         liste = new Sorucevaplist();
         Sorular2 = new ArrayList(6);
         Cevaplar2 = new ArrayList();
+        Dogru = new ArrayList<>();
+
         random = new Random();
         puan = 0;
 
+        liste.SetDogruCevap(Dogru);
         liste.SetSorulistesi(Sorular2);
         liste.SetCevaplistesi(Cevaplar2);
         liste.SoruCevap();
@@ -102,7 +106,7 @@ public class MainActivity extends AppCompatActivity{
 
         cagır.SorularveCevaplar();  */
 
-        button3.setClickable(true);
+
 
         if(aynısoru == rnd){
 
@@ -155,8 +159,15 @@ public class MainActivity extends AppCompatActivity{
 
     public void A(View view){
 
+     if(Dogru.get(rnd).equals("A")){
+
+         button1.setBackgroundColor(Color.parseColor("#00a000"));
+         puan += 10;
+
+         textView6.setText("PUAN:"+ puan);
 
 
+     }
 
 
 
@@ -182,18 +193,6 @@ public class MainActivity extends AppCompatActivity{
     public void C(View view){
 
 
-        if(Sorular2.get(0) == "Meskûkât bilimi neye denir?" && rnd == 0){
-
-            puan += 10;
-
-            textView6.setText("PUAN:"+puan);
-            button3.setBackgroundColor(Color.parseColor("#00a000"));
-
-
-
-        }
-
-        button3.setClickable(false);
 
 
     }
@@ -203,7 +202,6 @@ public class MainActivity extends AppCompatActivity{
 
 
     public void D(View view){
-
 
 
 
@@ -224,8 +222,6 @@ public class MainActivity extends AppCompatActivity{
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
-
-        button3.setClickable(true);
 
         if(Sorular2.size() == 1) {
 
@@ -273,6 +269,8 @@ public class MainActivity extends AppCompatActivity{
 
 
     public void degıstır(View view){
+
+
         if(Sorular2.size() == 1) {
             Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
             return;
@@ -287,7 +285,7 @@ public class MainActivity extends AppCompatActivity{
         button3.setBackgroundColor(Color.parseColor("#8000bf"));
         button4.setBackgroundColor(Color.parseColor("#8000bf"));
 
-        button3.setClickable(true);
+
 
         aynısoru = rnd;
         rnd = random.nextInt(sorularSize);
