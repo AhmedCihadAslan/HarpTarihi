@@ -8,7 +8,6 @@ public class Sorucevaplist {
     ArrayList <String> Cevaplistesi;
 
 
-
     public  void SetSorulistesi (ArrayList <String> sorulistesi){
 
         this.Sorulistesi = sorulistesi;
@@ -21,6 +20,8 @@ public class Sorucevaplist {
 
 
     }
+
+
 
     public  void SetCevaplistesi (ArrayList <String> cevaplistesi){
 
@@ -36,11 +37,14 @@ public class Sorucevaplist {
     }
 
     public void SoruCevapSil(int a){
+
         Sorulistesi.remove(a);
         Cevaplistesi.remove((a*4)+3);
         Cevaplistesi.remove((a*4)+2);
         Cevaplistesi.remove((a*4)+1);
         Cevaplistesi.remove(a*4);
+
+
     }
 
     public void SoruCevap(){
@@ -51,6 +55,7 @@ public class Sorucevaplist {
         Cevaplistesi.add("Irk Bilimi");
         Cevaplistesi.add("Para Bilimi");
         Cevaplistesi.add("Doğa Bilimi");
+
 
 
         Sorulistesi.add("Melikşah adına düzenlenen takvim hangisidir?");
