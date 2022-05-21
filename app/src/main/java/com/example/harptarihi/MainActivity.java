@@ -273,6 +273,13 @@ public class MainActivity extends AppCompatActivity{
 
 
     public void degıstır(View view){
+        if(Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
 
 
         button1.setBackgroundColor(Color.parseColor("#8000bf"));
