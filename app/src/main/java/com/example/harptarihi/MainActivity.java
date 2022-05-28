@@ -1,82 +1,145 @@
 package com.example.harptarihi;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
-import androidx.core.content.ContextCompat;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView textView;
 
-    private AppCompatImageView butonYariYariya;
-    private AppCompatTextView button1;
-    private AppCompatTextView button2;
-    private AppCompatTextView button3;
-    private AppCompatTextView button4;
-    private AppCompatImageView butonDegistir;
-    private AppCompatImageView butonCevabiGor;
+    TextView textView;
+    TextView textView2;
+    TextView textView3;
+    TextView textView4;
+    TextView textView5;
+    TextView textView6;
 
-    private Sorularvecevaplar cagır;
+    Button button;
+    Button button1;
+    Button button2;
+    Button button3;
+    Button button4;
+    Button button5;
+    Button button6;
+    Button button7;
 
-    private Random random;
-    private int aynısoru;
-    private int rnd;
-    private String Sorular[];
-    private String cevap[];
+    Sorucevaplist liste;
+    //Sorularvecevaplar cagır;
+    ArrayList<String> Sorular2;
+    ArrayList<String> Cevaplar2;
+    ArrayList<String> Dogru;
+
+    Random random;
+    Random yarı;
+    int aynısoru;
+    int yarısayı;
+    int rnd;
+    String Sorular[];
+    String cevap[];
+    int sorularSize;
+    int puan;
 
     //**************************************************************************************************
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setViews();
+        textView = findViewById(R.id.textView);
+        textView2 = findViewById(R.id.textView2);
+        textView3 = findViewById(R.id.textView3);
+        textView4 = findViewById(R.id.textView4);
+        textView5 = findViewById(R.id.textView5);
+        textView6 = findViewById(R.id.textView6);
+
+        button = findViewById(R.id.button);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
+        button6 = findViewById(R.id.button6);
+        button7 = findViewById(R.id.button7);
+
+        //cagır = new Sorularvecevaplar();
+        button1.setBackgroundColor(Color.parseColor("#8000bf"));
+        button2.setBackgroundColor(Color.parseColor("#8000bf"));
+        button3.setBackgroundColor(Color.parseColor("#8000bf"));
+        button4.setBackgroundColor(Color.parseColor("#8000bf"));
+
+        liste = new Sorucevaplist();
+        Sorular2 = new ArrayList(6);
+        Cevaplar2 = new ArrayList();
+        Dogru = new ArrayList<>();
+
+        random = new Random();
+        yarı = new Random();
+        puan = 0;
+        button7.setVisibility(View.INVISIBLE);
+        liste.SetDogruCevap(Dogru);
+        liste.SetSorulistesi(Sorular2);
+        liste.SetCevaplistesi(Cevaplar2);
+        liste.SoruCevap();
+        sorularSize = Sorular2.size();
+
+        rnd = random.nextInt(sorularSize);
 
         SoruCevap();
+
     }
 
     //**************************************************************************************************
 
     public void SoruCevap() {
-        Sorular = new String[6];
-        cevap = new String[24];
+
+
+      /* Sorular  = new String[6];
+      cevap = new String [24];
+
 
         cagır.SetCevaplar(cevap);
         cagır.SetSorular(Sorular);
 
-        cagır.SorularveCevaplar();
+        cagır.SorularveCevaplar();  */
+
 
         if (aynısoru == rnd) {
-            rnd = random.nextInt(6);
+
+            rnd = random.nextInt(sorularSize);
+
         }
 
         aynısoru = rnd;
 
-
         int i = 0;
 
-        while (i != Sorular.length + 1) {
+
+        while (i != Sorular2.size() + 1) {
 
             int a = i * 4;
 
             if (i == rnd) {
 
-                textView.setText(Sorular[i]);
+                textView.setText(Sorular2.get(i));
 
-                button1.setText(cevap[a]);
-                button2.setText(cevap[a + 1]);
-                button3.setText(cevap[a + 2]);
-                button4.setText(cevap[a + 3]);
+                textView2.setText(Cevaplar2.get(a));
+                textView3.setText(Cevaplar2.get(a + 1));
+                textView4.setText(Cevaplar2.get(a + 2));
+                textView5.setText(Cevaplar2.get(a + 3));
 
                 break;
+
+
             } else if (i > rnd) {
 
                 i--;
@@ -84,7 +147,10 @@ public class MainActivity extends AppCompatActivity {
             } else if (i < rnd) {
 
                 i++;
+
+
             }
+
         }
     }
 
@@ -93,17 +159,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void A(View view) {
-        aynısoru = rnd;
-        rnd = random.nextInt(6);
 
-        button1.setVisibility(View.VISIBLE);
-        button4.setVisibility(View.VISIBLE);
+        button7.setVisibility(View.VISIBLE);
 
-        if (aynısoru == rnd) {
-            rnd = random.nextInt(6);
+        if (Dogru.get(rnd).equals("A")) {
+
+            button1.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
         }
-
-        SoruCevap();
     }
 
 
@@ -112,103 +183,302 @@ public class MainActivity extends AppCompatActivity {
 
     public void B(View view) {
 
-        aynısoru = rnd;
-        rnd = random.nextInt(6);
+        button7.setVisibility(View.VISIBLE);
 
-        button1.setVisibility(View.VISIBLE);
-        button4.setVisibility(View.VISIBLE);
+        if (Dogru.get(rnd).equals("B")) {
 
-        if (aynısoru == rnd) {
-            rnd = random.nextInt(6);
+            button2.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
         }
-
-        SoruCevap();
     }
 
 
-    //**************************************************************************************************
+    //**********************************************************************************************
 
 
     public void C(View view) {
-        aynısoru = rnd;
-        rnd = random.nextInt(6);
+        button7.setVisibility(View.VISIBLE);
 
-        button1.setVisibility(View.VISIBLE);
-        button4.setVisibility(View.VISIBLE);
+        if (Dogru.get(rnd).equals("C")) {
 
-        if (aynısoru == rnd) {
-            rnd = random.nextInt(6);
+            button3.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
         }
-
-        SoruCevap();
     }
 
 
-    //**************************************************************************************************
+    //**********************************************************************************************
 
 
     public void D(View view) {
-        aynısoru = rnd;
-        rnd = random.nextInt(6);
+
+        button7.setVisibility(View.VISIBLE);
+        if (Dogru.get(rnd).equals("D")) {
+
+            button4.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+        }
+
+    }
+
+    //**********************************************************************************************
+
+
+    public void sıradakısoru(View view) {
+
+        button7.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
-        if (aynısoru == rnd) {
-            rnd = random.nextInt(6);
+        if (Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        button1.setBackgroundColor(Color.parseColor("#8000bf"));
+        button2.setBackgroundColor(Color.parseColor("#8000bf"));
+        button3.setBackgroundColor(Color.parseColor("#8000bf"));
+        button4.setBackgroundColor(Color.parseColor("#8000bf"));
+
+        button.setClickable(true);
+        button5.setClickable(true);
+        button1.setClickable(true);
+        button2.setClickable(true);
+        button3.setClickable(true);
+        button4.setClickable(true);
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
+
+        if(sorularSize < 1) {
+            return;
+        }
+
+        aynısoru = rnd;
+
+        rnd = random.nextInt(sorularSize);
+
+        if (aynısoru == rnd) {
+            rnd = random.nextInt(sorularSize);
+        }
+
         SoruCevap();
     }
 
 
     //**************************************************************************************************
 
-
     public void yarıyarıya(View view) {
-        butonYariYariya.setVisibility(View.INVISIBLE);
-        button1.setVisibility(View.INVISIBLE);
-        button4.setVisibility(View.INVISIBLE);
+
+
+        if (Dogru.get(rnd).equals("A")) {
+
+            button.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+            button4.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+        if (Dogru.get(rnd).equals("B")) {
+
+
+            button.setVisibility(View.INVISIBLE);
+            button1.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+
+        if (Dogru.get(rnd).equals("C")) {
+
+
+            button.setVisibility(View.INVISIBLE);
+            button2.setVisibility(View.INVISIBLE);
+            button1.setVisibility(View.INVISIBLE);
+
+
+        }
+
+
+
+        if (Dogru.get(rnd).equals("D")) {
+
+
+            button.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+            button2.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+
+
+
+
+
     }
 
 
     public void degıstır(View view) {
+
+        button7.setVisibility(View.INVISIBLE);
+
+        button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+
+        if (Sorular2.size() == 1) {
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        liste.SoruCevapSil(rnd);
+        sorularSize--;
+
+
+        button1.setBackgroundColor(Color.parseColor("#8000bf"));
+        button2.setBackgroundColor(Color.parseColor("#8000bf"));
+        button3.setBackgroundColor(Color.parseColor("#8000bf"));
+        button4.setBackgroundColor(Color.parseColor("#8000bf"));
+
+
         aynısoru = rnd;
-        rnd = random.nextInt(6);
+        rnd = random.nextInt(sorularSize);
+
+
         button1.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
         if (aynısoru == rnd) {
-            rnd = random.nextInt(6);
+            rnd = random.nextInt(sorularSize);
         }
 
+        button5.setVisibility(View.INVISIBLE);
         SoruCevap();
-        butonDegistir.setVisibility(View.INVISIBLE);
+
+        if (Sorular2.size() == 1) {
+
+            Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
+            return;
+
+        }
+
+        button1.setClickable(true);
+        button2.setClickable(true);
+        button3.setClickable(true);
+        button4.setClickable(true);
     }
 
     public void cevabıgor(View view) {
-        button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
-        butonCevabiGor.setVisibility(View.INVISIBLE);
+
+        //#660099
+        button6.setVisibility(View.INVISIBLE);
         button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
+
+        button7.setVisibility(View.VISIBLE);
+
+        if (Dogru.get(rnd).equals("A")) {
+
+            button1.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+        }
+
+        if (Dogru.get(rnd).equals("B")) {
+
+            button2.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+        }
+
+
+        if (Dogru.get(rnd).equals("C")) {
+
+            button3.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+        }
+
+
+
+        if (Dogru.get(rnd).equals("D")) {
+
+            button4.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+
+        }
+
+
+
+
     }
 
-    private void setViews() {
-        textView = findViewById(R.id.textView);
-
-        butonYariYariya = findViewById(R.id.buton_yari_yariya);
-
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
-        button3 = findViewById(R.id.button3);
-        button4 = findViewById(R.id.button4);
-
-        butonDegistir = findViewById(R.id.buton_degistir);
-        butonCevabiGor = findViewById(R.id.buton_cevabi_gor);
-
-        cagır = new Sorularvecevaplar();
-
-        random = new Random();
-        rnd = random.nextInt(6);
-    }
 
 }
