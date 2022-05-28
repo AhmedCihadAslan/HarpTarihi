@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button button4;
     Button button5;
     Button button6;
+    Button button7;
 
     Sorucevaplist liste;
     //Sorularvecevaplar cagır;
@@ -37,7 +38,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> Dogru;
 
     Random random;
+    Random yarı;
     int aynısoru;
+    int yarısayı;
     int rnd;
     String Sorular[];
     String cevap[];
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         button4 = findViewById(R.id.button4);
         button5 = findViewById(R.id.button5);
         button6 = findViewById(R.id.button6);
+        button7 = findViewById(R.id.button7);
 
         //cagır = new Sorularvecevaplar();
         button1.setBackgroundColor(Color.parseColor("#8000bf"));
@@ -79,8 +83,9 @@ public class MainActivity extends AppCompatActivity {
         Dogru = new ArrayList<>();
 
         random = new Random();
+        yarı = new Random();
         puan = 0;
-
+        button7.setVisibility(View.INVISIBLE);
         liste.SetDogruCevap(Dogru);
         liste.SetSorulistesi(Sorular2);
         liste.SetCevaplistesi(Cevaplar2);
@@ -154,6 +159,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void A(View view) {
+
+        button7.setVisibility(View.VISIBLE);
+
         if (Dogru.get(rnd).equals("A")) {
 
             button1.setBackgroundColor(Color.parseColor("#00a000"));
@@ -174,6 +182,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void B(View view) {
+
+        button7.setVisibility(View.VISIBLE);
+
         if (Dogru.get(rnd).equals("B")) {
 
             button2.setBackgroundColor(Color.parseColor("#00a000"));
@@ -194,6 +205,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void C(View view) {
+        button7.setVisibility(View.VISIBLE);
+
         if (Dogru.get(rnd).equals("C")) {
 
             button3.setBackgroundColor(Color.parseColor("#00a000"));
@@ -213,6 +226,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void D(View view) {
+
+        button7.setVisibility(View.VISIBLE);
         if (Dogru.get(rnd).equals("D")) {
 
             button4.setBackgroundColor(Color.parseColor("#00a000"));
@@ -232,6 +247,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sıradakısoru(View view) {
+
+        button7.setVisibility(View.INVISIBLE);
+
+        button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+
         if (Sorular2.size() == 1) {
             Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
             return;
@@ -242,9 +265,8 @@ public class MainActivity extends AppCompatActivity {
         button3.setBackgroundColor(Color.parseColor("#8000bf"));
         button4.setBackgroundColor(Color.parseColor("#8000bf"));
 
-        button1.setVisibility(View.VISIBLE);
-        button4.setVisibility(View.VISIBLE);
-
+        button.setClickable(true);
+        button5.setClickable(true);
         button1.setClickable(true);
         button2.setClickable(true);
         button3.setClickable(true);
@@ -270,14 +292,72 @@ public class MainActivity extends AppCompatActivity {
 
 
     //**************************************************************************************************
+
     public void yarıyarıya(View view) {
-        button.setVisibility(View.INVISIBLE);
-        button1.setVisibility(View.INVISIBLE);
-        button4.setVisibility(View.INVISIBLE);
+
+
+        if (Dogru.get(rnd).equals("A")) {
+
+            button.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+            button4.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+        if (Dogru.get(rnd).equals("B")) {
+
+
+            button.setVisibility(View.INVISIBLE);
+            button1.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+
+        if (Dogru.get(rnd).equals("C")) {
+
+
+            button.setVisibility(View.INVISIBLE);
+            button2.setVisibility(View.INVISIBLE);
+            button1.setVisibility(View.INVISIBLE);
+
+
+        }
+
+
+
+        if (Dogru.get(rnd).equals("D")) {
+
+
+            button.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+            button2.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+
+
+
+
+
     }
 
 
     public void degıstır(View view) {
+
+        button7.setVisibility(View.INVISIBLE);
+
+        button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+
         if (Sorular2.size() == 1) {
             Toast.makeText(this, "Sorular bitti", Toast.LENGTH_SHORT).show();
             return;
@@ -323,10 +403,79 @@ public class MainActivity extends AppCompatActivity {
     public void cevabıgor(View view) {
 
         //#660099
-        button4.setBackgroundColor(Color.parseColor("#66CC33"));
         button6.setVisibility(View.INVISIBLE);
         button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
+
+        button7.setVisibility(View.VISIBLE);
+
+        if (Dogru.get(rnd).equals("A")) {
+
+            button1.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+        }
+
+        if (Dogru.get(rnd).equals("B")) {
+
+            button2.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+        }
+
+
+        if (Dogru.get(rnd).equals("C")) {
+
+            button3.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+        }
+
+
+
+        if (Dogru.get(rnd).equals("D")) {
+
+            button4.setBackgroundColor(Color.parseColor("#00a000"));
+            puan += 10;
+
+            textView6.setText("PUAN:" + puan);
+            button.setClickable(false);
+            button5.setClickable(false);
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+
+        }
+
+
 
 
     }
