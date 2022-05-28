@@ -33,6 +33,19 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/soru_font"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_siradaki_soru"
+        app:layout_constraintEnd_toStartOf="@+id/button_siradaki_soru"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button_siradaki_soru"
+        tools:text="20 Puan" />
+
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/button1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,8 +53,8 @@
         android:fontFamily="@font/soru_font"
         android:gravity="center"
         android:onClick="A"
-        android:paddingEnd="4dp"
         android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
@@ -58,10 +71,10 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/secenek"
         android:fontFamily="@font/soru_font"
-        android:paddingEnd="4dp"
-        android:paddingStart="4dp"
         android:gravity="center"
         android:onClick="B"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/button1"
@@ -78,16 +91,17 @@
         android:background="@drawable/secenek"
         android:fontFamily="@font/soru_font"
         android:gravity="center"
-        android:paddingEnd="4dp"
-        android:paddingStart="4dp"
         android:onClick="C"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:textColor="@color/black"
         android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_siradaki_soru"
         app:layout_constraintEnd_toStartOf="@+id/button4"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button1" />
+        app:layout_constraintTop_toBottomOf="@+id/button1"
+        tools:text="Test 3" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/button4"
@@ -96,17 +110,18 @@
         android:layout_marginStart="8dp"
         android:background="@drawable/secenek"
         android:fontFamily="@font/soru_font"
-        android:paddingEnd="4dp"
-        android:paddingStart="4dp"
         android:gravity="center"
         android:onClick="D"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toTopOf="@+id/button3" />
+        app:layout_constraintTop_toTopOf="@+id/button3"
+        tools:text="Test 4" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/buton_yari_yariya"
@@ -143,4 +158,18 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/buton_degistir"
         app:layout_constraintTop_toTopOf="@+id/buton_degistir" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_siradaki_soru"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/secenek"
+        android:fontFamily="@font/soru_font"
+        android:gravity="center"
+        android:onClick="sıradakısoru"
+        android:text="Sıradaki Soru"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

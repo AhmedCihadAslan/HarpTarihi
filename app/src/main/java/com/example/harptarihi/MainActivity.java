@@ -1,38 +1,33 @@
 package com.example.harptarihi;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-
     TextView textView;
-    TextView textView2;
-    TextView textView3;
-    TextView textView4;
-    TextView textView5;
     TextView textView6;
 
-    Button button;
-    Button button1;
-    Button button2;
-    Button button3;
-    Button button4;
-    Button button5;
-    Button button6;
-    Button button7;
+    AppCompatImageView button;
+    AppCompatTextView button1;
+    AppCompatTextView button2;
+    AppCompatTextView button3;
+    AppCompatTextView button4;
+    AppCompatImageView button5;
+    AppCompatImageView button6;
+    AppCompatTextView button7;
 
     Sorucevaplist liste;
-    //Sorularvecevaplar cagır;
     ArrayList<String> Sorular2;
     ArrayList<String> Cevaplar2;
     ArrayList<String> Dogru;
@@ -40,10 +35,7 @@ public class MainActivity extends AppCompatActivity {
     Random random;
     Random yarı;
     int aynısoru;
-    int yarısayı;
     int rnd;
-    String Sorular[];
-    String cevap[];
     int sorularSize;
     int puan;
 
@@ -56,26 +48,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textView);
-        textView2 = findViewById(R.id.textView2);
-        textView3 = findViewById(R.id.textView3);
-        textView4 = findViewById(R.id.textView4);
-        textView5 = findViewById(R.id.textView5);
-        textView6 = findViewById(R.id.textView6);
 
-        button = findViewById(R.id.button);
+        button = findViewById(R.id.buton_yari_yariya);
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
         button4 = findViewById(R.id.button4);
-        button5 = findViewById(R.id.button5);
-        button6 = findViewById(R.id.button6);
-        button7 = findViewById(R.id.button7);
-
-        //cagır = new Sorularvecevaplar();
-        button1.setBackgroundColor(Color.parseColor("#8000bf"));
-        button2.setBackgroundColor(Color.parseColor("#8000bf"));
-        button3.setBackgroundColor(Color.parseColor("#8000bf"));
-        button4.setBackgroundColor(Color.parseColor("#8000bf"));
+        button5 = findViewById(R.id.buton_degistir);
+        button6 = findViewById(R.id.buton_cevabi_gor);
+        button7 = findViewById(R.id.button_siradaki_soru);
+        textView6 = findViewById(R.id.tv_score);
 
         liste = new Sorucevaplist();
         Sorular2 = new ArrayList(6);
@@ -132,10 +114,10 @@ public class MainActivity extends AppCompatActivity {
 
                 textView.setText(Sorular2.get(i));
 
-                textView2.setText(Cevaplar2.get(a));
-                textView3.setText(Cevaplar2.get(a + 1));
-                textView4.setText(Cevaplar2.get(a + 2));
-                textView5.setText(Cevaplar2.get(a + 3));
+                button1.setText(Cevaplar2.get(a));
+                button2.setText(Cevaplar2.get(a + 1));
+                button3.setText(Cevaplar2.get(a + 2));
+                button4.setText(Cevaplar2.get(a + 3));
 
                 break;
 
@@ -156,15 +138,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     //**************************************************************************************************
-
-
     public void A(View view) {
 
         button7.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("A")) {
 
-            button1.setBackgroundColor(Color.parseColor("#00a000"));
+            button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -187,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Dogru.get(rnd).equals("B")) {
 
-            button2.setBackgroundColor(Color.parseColor("#00a000"));
+            button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -209,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Dogru.get(rnd).equals("C")) {
 
-            button3.setBackgroundColor(Color.parseColor("#00a000"));
+            button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -226,11 +206,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void D(View view) {
-
         button7.setVisibility(View.VISIBLE);
         if (Dogru.get(rnd).equals("D")) {
 
-            button4.setBackgroundColor(Color.parseColor("#00a000"));
+            button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -240,14 +219,12 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
         }
-
     }
 
     //**********************************************************************************************
 
 
     public void sıradakısoru(View view) {
-
         button7.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
@@ -260,10 +237,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        button1.setBackgroundColor(Color.parseColor("#8000bf"));
-        button2.setBackgroundColor(Color.parseColor("#8000bf"));
-        button3.setBackgroundColor(Color.parseColor("#8000bf"));
-        button4.setBackgroundColor(Color.parseColor("#8000bf"));
+        button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
 
         button.setClickable(true);
         button5.setClickable(true);
@@ -275,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
         liste.SoruCevapSil(rnd);
         sorularSize--;
 
-        if(sorularSize < 1) {
+        if (sorularSize < 1) {
             return;
         }
 
@@ -290,67 +267,33 @@ public class MainActivity extends AppCompatActivity {
         SoruCevap();
     }
 
-
     //**************************************************************************************************
 
     public void yarıyarıya(View view) {
-
-
         if (Dogru.get(rnd).equals("A")) {
-
             button.setVisibility(View.INVISIBLE);
             button3.setVisibility(View.INVISIBLE);
             button4.setVisibility(View.INVISIBLE);
-
-
-
         }
 
         if (Dogru.get(rnd).equals("B")) {
-
-
             button.setVisibility(View.INVISIBLE);
             button1.setVisibility(View.INVISIBLE);
             button3.setVisibility(View.INVISIBLE);
-
-
-
         }
-
-
         if (Dogru.get(rnd).equals("C")) {
-
-
             button.setVisibility(View.INVISIBLE);
             button2.setVisibility(View.INVISIBLE);
             button1.setVisibility(View.INVISIBLE);
-
-
         }
-
-
-
         if (Dogru.get(rnd).equals("D")) {
-
-
             button.setVisibility(View.INVISIBLE);
             button3.setVisibility(View.INVISIBLE);
             button2.setVisibility(View.INVISIBLE);
-
-
-
         }
-
-
-
-
-
-
     }
 
-
     public void degıstır(View view) {
-
         button7.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
@@ -367,10 +310,10 @@ public class MainActivity extends AppCompatActivity {
         sorularSize--;
 
 
-        button1.setBackgroundColor(Color.parseColor("#8000bf"));
-        button2.setBackgroundColor(Color.parseColor("#8000bf"));
-        button3.setBackgroundColor(Color.parseColor("#8000bf"));
-        button4.setBackgroundColor(Color.parseColor("#8000bf"));
+        button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
 
 
         aynısoru = rnd;
@@ -401,7 +344,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cevabıgor(View view) {
-
         //#660099
         button6.setVisibility(View.INVISIBLE);
         button1.setVisibility(View.VISIBLE);
@@ -413,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (Dogru.get(rnd).equals("A")) {
 
-            button1.setBackgroundColor(Color.parseColor("#00a000"));
+            button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -426,10 +368,9 @@ public class MainActivity extends AppCompatActivity {
             button4.setClickable(false);
 
         }
-
         if (Dogru.get(rnd).equals("B")) {
 
-            button2.setBackgroundColor(Color.parseColor("#00a000"));
+            button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -441,11 +382,9 @@ public class MainActivity extends AppCompatActivity {
             button4.setClickable(false);
 
         }
-
-
         if (Dogru.get(rnd).equals("C")) {
 
-            button3.setBackgroundColor(Color.parseColor("#00a000"));
+            button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -456,12 +395,9 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
         }
-
-
-
         if (Dogru.get(rnd).equals("D")) {
 
-            button4.setBackgroundColor(Color.parseColor("#00a000"));
+            button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
@@ -471,14 +407,8 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
-
-
         }
 
-
-
-
     }
-
 
 }
