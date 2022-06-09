@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
     public void SoruCevap() {
 
 
-      /* Sorular  = new String[6];
-      cevap = new String [24];
+         /* Sorular  = new String[6];
+         cevap = new String [24];
 
 
         cagır.SetCevaplar(cevap);
@@ -142,7 +142,20 @@ public class MainActivity extends AppCompatActivity {
 
         button7.setVisibility(View.VISIBLE);
 
-        if (Dogru.get(rnd).equals("A")) {
+        if(puan < 0){
+
+            textView.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.yanlis_cevap_yazisi));
+            button7.setText("Menüye Dön");
+            textView.setText("");
+
+            button1.setVisibility(View.INVISIBLE);
+            button2.setVisibility(View.INVISIBLE);
+            button3.setVisibility(View.INVISIBLE);
+            button4.setVisibility(View.INVISIBLE);
+
+        }
+
+        else if (Dogru.get(rnd).equals("A")) {
 
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
@@ -154,7 +167,22 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
+        }else{
+
+            puan -= 10;
+            button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+
         }
+
+
+
     }
 
 
@@ -178,6 +206,19 @@ public class MainActivity extends AppCompatActivity {
             button4.setClickable(false);
 
         }
+        else{
+
+            puan -= 10;
+            button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+
+        }
     }
 
 
@@ -185,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void C(View view) {
+
         button7.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("C")) {
@@ -199,6 +241,19 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
         }
+        else{
+
+            puan -= 10;
+            button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+
+        }
     }
 
 
@@ -207,6 +262,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void D(View view) {
         button7.setVisibility(View.VISIBLE);
+
         if (Dogru.get(rnd).equals("D")) {
 
             button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
@@ -218,6 +274,19 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+        }
+        else{
+
+            puan -= 10;
+            button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
+            textView6.setText("PUAN:" + puan);
+
+            button1.setClickable(false);
+            button2.setClickable(false);
+            button3.setClickable(false);
+            button4.setClickable(false);
+
+
         }
     }
 
@@ -270,6 +339,7 @@ public class MainActivity extends AppCompatActivity {
     //**************************************************************************************************
 
     public void yarıyarıya(View view) {
+
         if (Dogru.get(rnd).equals("A")) {
             button.setVisibility(View.INVISIBLE);
             button3.setVisibility(View.INVISIBLE);
@@ -293,7 +363,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void degıstır(View view) {
+
         button7.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
