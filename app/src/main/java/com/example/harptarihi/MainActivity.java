@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
     int sorularSize;
     int puan;
 
+    AppCompatImageView imgYanlisCevap;
+    AppCompatTextView textYanlisCevapUyari;
+    AppCompatImageView textTekrarOyna;
+    AppCompatImageView textAnaMenu;
+    AppCompatImageView yanlisCevapTitle;
+
+
     //**************************************************************************************************
 
     @Override
@@ -58,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         button6 = findViewById(R.id.buton_cevabi_gor);
         button7 = findViewById(R.id.button_siradaki_soru);
         textView6 = findViewById(R.id.tv_score);
+        imgYanlisCevap = findViewById(R.id.layout_yanlis_cevap_uyari);
+        textYanlisCevapUyari = findViewById(R.id.text_view_yanlis_cevap_uyari);
+        textTekrarOyna = findViewById(R.id.buton_devam_et);
+        textAnaMenu = findViewById(R.id.buton_ana_menu);
+        yanlisCevapTitle = findViewById(R.id.text_yanlis_cevap_title);
 
         liste = new Sorucevaplist();
         Sorular2 = new ArrayList(6);
@@ -142,20 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
         button7.setVisibility(View.VISIBLE);
 
-        if(puan < 0){
-
-            textView.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.yanlis_cevap_yazisi));
-            button7.setText("Menüye Dön");
-            textView.setText("");
-
-            button1.setVisibility(View.INVISIBLE);
-            button2.setVisibility(View.INVISIBLE);
-            button3.setVisibility(View.INVISIBLE);
-            button4.setVisibility(View.INVISIBLE);
-
-        }
-
-        else if (Dogru.get(rnd).equals("A")) {
+        if (Dogru.get(rnd).equals("A")) {
 
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
@@ -167,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
-        }else{
+        } else {
 
             puan -= 10;
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -178,9 +177,8 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
-
+            yanlis();
         }
-
 
 
     }
@@ -205,8 +203,7 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
-        }
-        else{
+        } else {
 
             puan -= 10;
             button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -217,7 +214,7 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
-
+            yanlis();
         }
     }
 
@@ -240,8 +237,7 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
-        }
-        else{
+        } else {
 
             puan -= 10;
             button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -252,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
-
+            yanlis();
         }
     }
 
@@ -274,8 +270,7 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
-        }
-        else{
+        } else {
 
             puan -= 10;
             button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -286,8 +281,27 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
 
-
+            yanlis();
         }
+    }
+
+    private void yanlis() {
+        textView.setVisibility(View.INVISIBLE);
+        button.setVisibility(View.INVISIBLE);
+        button1.setVisibility(View.INVISIBLE);
+        button2.setVisibility(View.INVISIBLE);
+        button3.setVisibility(View.INVISIBLE);
+        button4.setVisibility(View.INVISIBLE);
+        button5.setVisibility(View.INVISIBLE);
+        button6.setVisibility(View.INVISIBLE);
+        button7.setVisibility(View.INVISIBLE);
+        textView6.setVisibility(View.INVISIBLE);
+
+        imgYanlisCevap.setVisibility(View.VISIBLE);
+        textYanlisCevapUyari.setVisibility(View.VISIBLE);
+        textTekrarOyna.setVisibility(View.VISIBLE);
+        textAnaMenu.setVisibility(View.VISIBLE);
+        yanlisCevapTitle.setVisibility(View.VISIBLE);
     }
 
     //**********************************************************************************************
@@ -483,4 +497,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void anaMenu(View view) {
+        finish();
+    }
+
+    public void devamEt(View view) {
+        recreate();
+    }
 }

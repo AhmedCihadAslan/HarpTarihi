@@ -23,13 +23,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buton_yari_yariya" />
+        app:layout_constraintTop_toBottomOf="@+id/buton_yari_yariya"
+        tools:visibility="invisible" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_vertical_center"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -62,7 +70,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        tools:text="Test" />
+        tools:text="Test"
+        tools:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/button2"
@@ -82,7 +91,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button1"
         app:layout_constraintTop_toTopOf="@+id/button1"
-        tools:text="Test 2" />
+        tools:text="Test 2"
+        tools:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/button3"
@@ -101,7 +111,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button1"
-        tools:text="Test 3" />
+        tools:text="Test 3"
+        tools:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/button4"
@@ -121,7 +132,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/button3"
         app:layout_constraintTop_toTopOf="@+id/button3"
-        tools:text="Test 4" />
+        tools:text="Test 4"
+        tools:visibility="gone" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/buton_yari_yariya"
@@ -172,4 +184,78 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/layout_yanlis_cevap_uyari"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="48dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_yanlis_cevap_uyari_box"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@id/textView"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/text_yanlis_cevap_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_yanlis_cevap"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/textView"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintWidth_percent="0.75"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_yanlis_cevap_uyari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/buton_font"
+        android:gravity="center_horizontal"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="aşağıdaki devam butonu ile reklam izleyerek kaldığınız yerden devam edebilirsiniz."
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@id/layout_yanlis_cevap_uyari"
+        app:layout_constraintStart_toStartOf="@id/layout_yanlis_cevap_uyari"
+        app:layout_constraintTop_toBottomOf="@id/text_yanlis_cevap_title"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/buton_ana_menu"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/buton_go_main_menu"
+        android:onClick="anaMenu"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/guideline_vertical_center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_yanlis_cevap_uyari"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/buton_devam_et"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/buton_devam_et"
+        android:onClick="devamEt"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_vertical_center"
+        app:layout_constraintTop_toBottomOf="@id/layout_yanlis_cevap_uyari"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
