@@ -302,6 +302,7 @@ public class MainActivity extends AppCompatActivity {
         textTekrarOyna.setVisibility(View.VISIBLE);
         textAnaMenu.setVisibility(View.VISIBLE);
         yanlisCevapTitle.setVisibility(View.VISIBLE);
+        //aa
     }
 
     //**********************************************************************************************
