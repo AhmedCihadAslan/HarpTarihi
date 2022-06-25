@@ -1,14 +1,25 @@
 package com.example.harptarihi;
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewarded.RewardedAd;
+import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -25,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatTextView button4;
     AppCompatImageView button5;
     AppCompatImageView button6;
-    AppCompatTextView button7;
+    AppCompatTextView buttonSiradakiSoru;
 
     Sorucevaplist liste;
     ArrayList<String> Sorular2;
@@ -45,31 +56,16 @@ public class MainActivity extends AppCompatActivity {
     AppCompatImageView textAnaMenu;
     AppCompatImageView yanlisCevapTitle;
 
+    private RewardedAd mRewardedAd;
 
     //**************************************************************************************************
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        textView = findViewById(R.id.textView);
-
-        button = findViewById(R.id.buton_yari_yariya);
-        button1 = findViewById(R.id.button1);
-        button2 = findViewById(R.id.button2);
-        button3 = findViewById(R.id.button3);
-        button4 = findViewById(R.id.button4);
-        button5 = findViewById(R.id.buton_degistir);
-        button6 = findViewById(R.id.buton_cevabi_gor);
-        button7 = findViewById(R.id.button_siradaki_soru);
-        textView6 = findViewById(R.id.tv_score);
-        imgYanlisCevap = findViewById(R.id.layout_yanlis_cevap_uyari);
-        textYanlisCevapUyari = findViewById(R.id.text_view_yanlis_cevap_uyari);
-        textTekrarOyna = findViewById(R.id.buton_devam_et);
-        textAnaMenu = findViewById(R.id.buton_ana_menu);
-        yanlisCevapTitle = findViewById(R.id.text_yanlis_cevap_title);
+        init();
+        setRewardedAd();
 
         liste = new Sorucevaplist();
         Sorular2 = new ArrayList(6);
@@ -79,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         random = new Random();
         yarı = new Random();
         puan = 0;
-        button7.setVisibility(View.INVISIBLE);
+        buttonSiradakiSoru.setVisibility(View.INVISIBLE);
         liste.SetDogruCevap(Dogru);
         liste.SetSorulistesi(Sorular2);
         liste.SetCevaplistesi(Cevaplar2);
@@ -95,29 +91,12 @@ public class MainActivity extends AppCompatActivity {
     //**************************************************************************************************
 
     public void SoruCevap() {
-
-
-         /* Sorular  = new String[6];
-         cevap = new String [24];
-
-
-        cagır.SetCevaplar(cevap);
-        cagır.SetSorular(Sorular);
-
-        cagır.SorularveCevaplar();  */
-
-
         if (aynısoru == rnd) {
-
             rnd = random.nextInt(sorularSize);
-
         }
-
         aynısoru = rnd;
 
         int i = 0;
-
-
         while (i != Sorular2.size() + 1) {
 
             int a = i * 4;
@@ -148,11 +127,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     //**************************************************************************************************
     public void A(View view) {
 
-        button7.setVisibility(View.VISIBLE);
+        buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("A")) {
 
@@ -176,8 +154,21 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
-            yanlis();
+            switch (Dogru.get(rnd)) {
+                case "D":
+                    button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "B":
+                    button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "C":
+                    button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+            }
+
+            delay();
         }
 
 
@@ -189,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void B(View view) {
 
-        button7.setVisibility(View.VISIBLE);
+        buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("B")) {
 
@@ -213,8 +204,21 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
-            yanlis();
+            switch (Dogru.get(rnd)) {
+                case "A":
+                    button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "D":
+                    button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "C":
+                    button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+            }
+
+            delay();
         }
     }
 
@@ -224,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void C(View view) {
 
-        button7.setVisibility(View.VISIBLE);
+        buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("C")) {
 
@@ -247,8 +251,21 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
-            yanlis();
+            switch (Dogru.get(rnd)) {
+                case "A":
+                    button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "B":
+                    button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "D":
+                    button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+            }
+
+            delay();
         }
     }
 
@@ -257,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void D(View view) {
-        button7.setVisibility(View.VISIBLE);
+        buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("D")) {
 
@@ -271,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
         } else {
-
             puan -= 10;
             button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
             textView6.setText("PUAN:" + puan);
@@ -280,36 +296,34 @@ public class MainActivity extends AppCompatActivity {
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
-            yanlis();
+            switch (Dogru.get(rnd)) {
+                case "A":
+                    button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "B":
+                    button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+                case "C":
+                    button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    break;
+            }
+
+            delay();
         }
     }
 
-    private void yanlis() {
-        textView.setVisibility(View.INVISIBLE);
-        button.setVisibility(View.INVISIBLE);
-        button1.setVisibility(View.INVISIBLE);
-        button2.setVisibility(View.INVISIBLE);
-        button3.setVisibility(View.INVISIBLE);
-        button4.setVisibility(View.INVISIBLE);
-        button5.setVisibility(View.INVISIBLE);
-        button6.setVisibility(View.INVISIBLE);
-        button7.setVisibility(View.INVISIBLE);
-        textView6.setVisibility(View.INVISIBLE);
-
-        imgYanlisCevap.setVisibility(View.VISIBLE);
-        textYanlisCevapUyari.setVisibility(View.VISIBLE);
-        textTekrarOyna.setVisibility(View.VISIBLE);
-        textAnaMenu.setVisibility(View.VISIBLE);
-        yanlisCevapTitle.setVisibility(View.VISIBLE);
-        //aa
+    private void delay() {
+        Handler handler = new Handler();
+        handler.postDelayed(this::yanlis, 3000);
     }
 
     //**********************************************************************************************
 
 
     public void sıradakısoru(View view) {
-        button7.setVisibility(View.INVISIBLE);
+        buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
         button2.setVisibility(View.VISIBLE);
@@ -381,7 +395,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void degıstır(View view) {
 
-        button7.setVisibility(View.INVISIBLE);
+        buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
         button2.setVisibility(View.VISIBLE);
@@ -438,7 +452,7 @@ public class MainActivity extends AppCompatActivity {
         button3.setVisibility(View.VISIBLE);
         button4.setVisibility(View.VISIBLE);
 
-        button7.setVisibility(View.VISIBLE);
+        buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("A")) {
 
@@ -504,6 +518,100 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void devamEt(View view) {
-        recreate();
+        if (mRewardedAd != null) {
+            Activity activityContext = MainActivity.this;
+            mRewardedAd.show(activityContext, rewardItem -> {
+                onRewardedAdFinished();
+            });
+        } else {
+            Toast.makeText(MainActivity.this, "Reklam yüklenirken bir sorun oluştu.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void setRewardedAd() {
+        MobileAds.initialize(this);
+        AdRequest adRequest = new AdRequest.Builder().build();
+
+        RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
+                adRequest, new RewardedAdLoadCallback() {
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mRewardedAd = null;
+                    }
+
+                    @Override
+                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
+                        mRewardedAd = rewardedAd;
+                    }
+                });
+    }
+
+    private void onRewardedAdFinished() {
+        textView.setVisibility(View.VISIBLE);
+        button.setVisibility(View.VISIBLE);
+        button1.setVisibility(View.VISIBLE);
+        button2.setVisibility(View.VISIBLE);
+        button3.setVisibility(View.VISIBLE);
+        button4.setVisibility(View.VISIBLE);
+        button5.setVisibility(View.VISIBLE);
+        button6.setVisibility(View.VISIBLE);
+        buttonSiradakiSoru.setVisibility(View.INVISIBLE);
+        textView6.setVisibility(View.VISIBLE);
+
+        imgYanlisCevap.setVisibility(View.INVISIBLE);
+        textYanlisCevapUyari.setVisibility(View.INVISIBLE);
+        textTekrarOyna.setVisibility(View.INVISIBLE);
+        textAnaMenu.setVisibility(View.INVISIBLE);
+        yanlisCevapTitle.setVisibility(View.INVISIBLE);
+
+        button1.setClickable(true);
+        button2.setClickable(true);
+        button3.setClickable(true);
+        button4.setClickable(true);
+        button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+        button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
+
+        SoruCevap();
+    }
+
+    private void yanlis() {
+        textView.setVisibility(View.INVISIBLE);
+        button.setVisibility(View.INVISIBLE);
+        button1.setVisibility(View.INVISIBLE);
+        button2.setVisibility(View.INVISIBLE);
+        button3.setVisibility(View.INVISIBLE);
+        button4.setVisibility(View.INVISIBLE);
+        button5.setVisibility(View.INVISIBLE);
+        button6.setVisibility(View.INVISIBLE);
+        buttonSiradakiSoru.setVisibility(View.INVISIBLE);
+        textView6.setVisibility(View.INVISIBLE);
+
+        imgYanlisCevap.setVisibility(View.VISIBLE);
+        textYanlisCevapUyari.setVisibility(View.VISIBLE);
+        textTekrarOyna.setVisibility(View.VISIBLE);
+        textAnaMenu.setVisibility(View.VISIBLE);
+        yanlisCevapTitle.setVisibility(View.VISIBLE);
+        //aa
+    }
+
+    private void init() {
+        textView = findViewById(R.id.textView);
+
+        button = findViewById(R.id.buton_yari_yariya);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.buton_degistir);
+        button6 = findViewById(R.id.buton_cevabi_gor);
+        buttonSiradakiSoru = findViewById(R.id.button_siradaki_soru);
+        textView6 = findViewById(R.id.tv_score);
+        imgYanlisCevap = findViewById(R.id.layout_yanlis_cevap_uyari);
+        textYanlisCevapUyari = findViewById(R.id.text_view_yanlis_cevap_uyari);
+        textTekrarOyna = findViewById(R.id.buton_devam_et);
+        textAnaMenu = findViewById(R.id.buton_ana_menu);
+        yanlisCevapTitle = findViewById(R.id.text_yanlis_cevap_title);
     }
 }
