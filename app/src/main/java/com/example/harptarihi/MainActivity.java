@@ -1,8 +1,13 @@
 package com.example.harptarihi;
 
 import android.app.Activity;
+import android.content.Context;
+import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,8 +21,6 @@ import androidx.core.content.ContextCompat;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.OnUserEarnedRewardListener;
-import com.google.android.gms.ads.rewarded.RewardItem;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
@@ -57,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
     AppCompatImageView yanlisCevapTitle;
 
     private RewardedAd mRewardedAd;
+
+    private MediaPlayer playerYanlis;
+    private MediaPlayer playerDogru;
 
     //**************************************************************************************************
 
@@ -133,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("A")) {
+            playDogru();
 
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
@@ -145,6 +152,8 @@ public class MainActivity extends AppCompatActivity {
             button4.setClickable(false);
 
         } else {
+            playYanlis();
+            titrestir();
 
             puan -= 10;
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -183,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("B")) {
+            playDogru();
 
             button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
@@ -195,6 +205,8 @@ public class MainActivity extends AppCompatActivity {
             button4.setClickable(false);
 
         } else {
+            playYanlis();
+            titrestir();
 
             puan -= 10;
             button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -231,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("C")) {
+            playDogru();
 
             button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
@@ -242,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
         } else {
+            playYanlis();
+            titrestir();
 
             puan -= 10;
             button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
@@ -277,6 +292,7 @@ public class MainActivity extends AppCompatActivity {
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("D")) {
+            playDogru();
 
             button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
             puan += 10;
@@ -288,6 +304,9 @@ public class MainActivity extends AppCompatActivity {
             button3.setClickable(false);
             button4.setClickable(false);
         } else {
+            playYanlis();
+            titrestir();
+
             puan -= 10;
             button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_yanlis));
             textView6.setText("PUAN:" + puan);
@@ -445,6 +464,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cevabıgor(View view) {
+        playDogru();
         //#660099
         button6.setVisibility(View.INVISIBLE);
         button1.setVisibility(View.VISIBLE);
@@ -593,8 +613,66 @@ public class MainActivity extends AppCompatActivity {
         textTekrarOyna.setVisibility(View.VISIBLE);
         textAnaMenu.setVisibility(View.VISIBLE);
         yanlisCevapTitle.setVisibility(View.VISIBLE);
-        //aa
     }
+
+    public void playYanlis() {
+        if (playerYanlis == null) {
+            playerYanlis = MediaPlayer.create(this, R.raw.wrong_sound);
+            playerYanlis.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayerYanlis();
+                }
+            });
+        }
+
+        playerYanlis.start();
+    }
+
+    private void stopPlayerYanlis() {
+        if (playerYanlis != null) {
+            playerYanlis.release();
+            playerYanlis = null;
+        }
+    }
+
+    public void playDogru() {
+        if (playerDogru == null) {
+            playerDogru = MediaPlayer.create(this, R.raw.correct_sound);
+            playerDogru.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    stopPlayerYanlis();
+                }
+            });
+        }
+
+        playerDogru.start();
+    }
+
+    private void stopPlayerDogru() {
+        if (playerDogru != null) {
+            playerDogru.release();
+            playerDogru = null;
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        stopPlayerYanlis();
+        stopPlayerDogru();
+    }
+
+    private void titrestir() {
+        Vibrator vibrator = (Vibrator) this.getSystemService(Context.VIBRATOR_SERVICE);
+        if (Build.VERSION.SDK_INT >= 26) {
+            vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+        } else {
+            vibrator.vibrate(500);
+        }
+    }
+
 
     private void init() {
         textView = findViewById(R.id.textView);
@@ -614,4 +692,6 @@ public class MainActivity extends AppCompatActivity {
         textAnaMenu = findViewById(R.id.buton_ana_menu);
         yanlisCevapTitle = findViewById(R.id.text_yanlis_cevap_title);
     }
+
+
 }
