@@ -19,8 +19,12 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 
@@ -60,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
     AppCompatImageView yanlisCevapTitle;
 
     private RewardedAd mRewardedAd;
+    private InterstitialAd mInterstitialAd;
+    private AdRequest adRequest;
+
+    private int interstitialAdCount = 1;
 
     private MediaPlayer playerYanlis;
     private MediaPlayer playerDogru;
@@ -188,7 +196,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void B(View view) {
-
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
         if (Dogru.get(rnd).equals("B")) {
@@ -342,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sıradakısoru(View view) {
+        showInterstitialAd();
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
@@ -413,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void degıstır(View view) {
+        showInterstitialAd();
 
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
@@ -550,7 +559,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setRewardedAd() {
         MobileAds.initialize(this);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        adRequest = new AdRequest.Builder().build();
 
         RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
                 adRequest, new RewardedAdLoadCallback() {
@@ -562,6 +571,44 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
                         mRewardedAd = rewardedAd;
+                    }
+                });
+
+        MobileAds.initialize(this, initializationStatus -> {
+        });
+
+
+        AdView bannerAdView = findViewById(R.id.adView);
+        bannerAdView.loadAd(adRequest);
+
+        AdView bannerAd = new AdView(this);
+        bannerAd.setAdSize(AdSize.BANNER);
+        bannerAd.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+
+        loadInterstitialAd();
+    }
+
+    private void showInterstitialAd() {
+        if (mInterstitialAd != null) {
+            if(interstitialAdCount % 7 == 0) mInterstitialAd.show(this);
+            interstitialAdCount++;
+        }
+        else loadInterstitialAd();
+    }
+
+
+    private void loadInterstitialAd() {
+        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        mInterstitialAd = interstitialAd;
+                        showInterstitialAd();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mInterstitialAd = null;
                     }
                 });
     }
