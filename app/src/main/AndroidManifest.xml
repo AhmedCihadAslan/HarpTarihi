@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HarpTarihi">
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AnaMenuActivity"
+            android:name=".LoginActivity"
             android:exported="true"/>
+        <activity
+            android:name=".AnaMenuActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

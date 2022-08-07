@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/harita_background"
+    tools:context=".SplashActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_logo"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/harp_tarihi_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_internet_root"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/soru_background"
+        android:fontFamily="@font/soru_font"
+        android:gravity="center"
+        android:maxHeight="120dp"
+        android:textColor="@color/black"
+        android:textSize="26sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_view_no_internet_uyari"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/buton_font"
+        android:gravity="center"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="Uygulamaya giriş yapmak için internet bağlantısı gereklidir. İnternet bağlantısı açıldıktan sonra tekrar deneyin."
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/no_internet_root"
+        app:layout_constraintEnd_toEndOf="@id/no_internet_root"
+        app:layout_constraintStart_toStartOf="@id/no_internet_root"
+        app:layout_constraintTop_toTopOf="@id/no_internet_root"
+        tools:visibility="gone" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/button_retry"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/secenek"
+        android:fontFamily="@font/soru_font"
+        android:gravity="center"
+        android:maxWidth="150dp"
+        android:onClick="retry"
+        android:text="Tekrar Dene"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:visibility="gone"
+        tools:visibility="visible"
+        app:layout_constraintEnd_toEndOf="@id/no_internet_root"
+        app:layout_constraintStart_toStartOf="@id/no_internet_root"
+        app:layout_constraintTop_toBottomOf="@id/no_internet_root" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
