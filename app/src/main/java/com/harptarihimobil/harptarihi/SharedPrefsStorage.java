@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.harptarihi.databinding.ActivityLoginBinding;
+import com.harptarihimobil.harptarihi.databinding.ActivityLoginBinding;
 
 import java.util.Objects;
 
@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         sharedPrefsStorage = new SharedPrefsStorage(this);
-        if(!sharedPrefsStorage.getUsername().isEmpty()) {
+        if (!sharedPrefsStorage.getUsername().isEmpty()) {
             openAnaMenu();
         }
     }

@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import android.app.Activity;
 import android.content.Context;
@@ -72,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer playerYanlis;
     private MediaPlayer playerDogru;
 
+    private ScoreFirebaseDatabase database;
+
     //**************************************************************************************************
 
     @Override
@@ -80,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
         setRewardedAd();
+
+        database = new ScoreFirebaseDatabase(this);
 
         liste = new Sorucevaplist();
         Sorular2 = new ArrayList(6);
@@ -543,6 +547,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void anaMenu(View view) {
+        database.setScore(puan);
+
         finish();
     }
 
@@ -590,10 +596,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void showInterstitialAd() {
         if (mInterstitialAd != null) {
-            if(interstitialAdCount % 7 == 0) mInterstitialAd.show(this);
+            if (interstitialAdCount % 7 == 0) mInterstitialAd.show(this);
             interstitialAdCount++;
-        }
-        else loadInterstitialAd();
+        } else loadInterstitialAd();
     }
 
 

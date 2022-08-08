@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.harptarihi.databinding.ActivitySplashBinding;
+import com.harptarihimobil.harptarihi.databinding.ActivitySplashBinding;
 
 public class SplashActivity extends AppCompatActivity {
 

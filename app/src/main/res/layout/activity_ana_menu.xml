@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/harita_background"
-    tools:context=".AnaMenuActivity">
+    tools:context="com.harptarihimobil.harptarihi.AnaMenuActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_logo"

@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import org.junit.Test;
 

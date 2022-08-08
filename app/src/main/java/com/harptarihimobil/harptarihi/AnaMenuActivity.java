@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.harptarihi.databinding.ActivityAnaMenuBinding;
+import com.harptarihimobil.harptarihi.databinding.ActivityAnaMenuBinding;
 
 public class AnaMenuActivity extends AppCompatActivity {
 

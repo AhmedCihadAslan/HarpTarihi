@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.harptarihi">
+    package="com.harptarihimobil.harptarihi">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HarpTarihi">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.harptarihimobil.harptarihi.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.harptarihimobil.harptarihi.LoginActivity"
             android:exported="true"/>
         <activity
-            android:name=".AnaMenuActivity"
+            android:name="com.harptarihimobil.harptarihi.AnaMenuActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.harptarihimobil.harptarihi.MainActivity"
             android:exported="true" />
 
         <meta-data

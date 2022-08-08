@@ -1,4 +1,4 @@
-package com.example.harptarihi;
+package com.harptarihimobil.harptarihi;
 
 import java.util.ArrayList;
 
@@ -9,48 +9,30 @@ public class Sorucevaplist {
     ArrayList <String> DogruListesi;
 
     public  void SetSorulistesi (ArrayList <String> sorulistesi){
-
         this.Sorulistesi = sorulistesi;
-
     }
 
     public ArrayList <String> GetSorulistesi(){
-
         return  Sorulistesi;
-
-
     }
 
     public void SetDogruCevap(ArrayList <String> DogruListesi){
-
         this.DogruListesi = DogruListesi;
-
-
     }
 
-    public ArrayList <String> GetDogruListesi(){
-
-
+    public ArrayList <String> GetDogruListesi() {
         return DogruListesi;
-
-
     }
 
     public  void SetCevaplistesi (ArrayList <String> cevaplistesi){
-
         this.Cevaplistesi = cevaplistesi;
-
     }
 
     public ArrayList <String> GetCevaplistesi(){
-
         return  Cevaplistesi;
-
-
     }
 
     public void SoruCevapSil(int a){
-
         Sorulistesi.remove(a);
         Cevaplistesi.remove((a*4)+3);
         Cevaplistesi.remove((a*4)+2);
@@ -58,11 +40,9 @@ public class Sorucevaplist {
         Cevaplistesi.remove(a*4);
 
         DogruListesi.remove(a);
-
     }
 
     public void SoruCevap(){
-
         Sorulistesi.add("Meskûkât bilimi neye denir?");
 
         Cevaplistesi.add("Savaş Bilimi");
@@ -119,40 +99,7 @@ public class Sorucevaplist {
         Cevaplistesi.add("IV. Murad");
 
         DogruListesi.add("B");
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

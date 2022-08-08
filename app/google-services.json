@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "107797915229",
+    "project_id": "harp-tarihi-ece22",
+    "storage_bucket": "harp-tarihi-ece22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107797915229:android:52c625b482cdc4eb828fb4",
+        "android_client_info": {
+          "package_name": "com.harptarihimobil.harptarihi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107797915229-ab9a2a3el13id9mdvfpba84aggh1fkgn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoITTG3N4BP7NkegruG2qZkOn9J_Lx7mw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107797915229-ab9a2a3el13id9mdvfpba84aggh1fkgn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
