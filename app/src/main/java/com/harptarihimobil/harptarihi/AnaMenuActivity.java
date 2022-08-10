@@ -28,5 +28,10 @@ public class AnaMenuActivity extends AppCompatActivity {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.harptarihi.net/"));
             startActivity(intent);
         });
+
+        binding.imgJokerAl.setOnClickListener(v -> {
+            Intent intent = new Intent(AnaMenuActivity.this, SkorTablosuActivity.class);
+            startActivity(intent);
+        });
     }
 }

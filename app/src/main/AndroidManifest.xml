@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HarpTarihi">
         <activity
-            android:name="com.harptarihimobil.harptarihi.SplashActivity"
+            android:name=".SkorTablosuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,13 +25,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.harptarihimobil.harptarihi.LoginActivity"
-            android:exported="true"/>
-        <activity
-            android:name="com.harptarihimobil.harptarihi.AnaMenuActivity"
+            android:name=".LoginActivity"
             android:exported="true" />
         <activity
-            android:name="com.harptarihimobil.harptarihi.MainActivity"
+            android:name=".AnaMenuActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true" />
 
         <meta-data
