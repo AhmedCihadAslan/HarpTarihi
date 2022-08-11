@@ -1,7 +1,9 @@
 package com.harptarihimobil.harptarihi;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +60,15 @@ public class SkorTablosuActivity extends AppCompatActivity {
         });
     }
 
+    public void geridön(View view){
+
+
+        finish();
+
+
+
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setHighScores(Map<String, Integer> items) {
         int index = 1;
@@ -88,6 +99,8 @@ public class SkorTablosuActivity extends AppCompatActivity {
             index++;
         }
     }
+
+
 
     private static <K, V> Map<K, V> sortByValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());

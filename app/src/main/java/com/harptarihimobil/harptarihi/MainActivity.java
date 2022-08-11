@@ -169,10 +169,13 @@ public class MainActivity extends AppCompatActivity {
 
             textView6.setText("PUAN:" + puan);
 
+            button6.setClickable(false);
             button1.setClickable(false);
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            button.setClickable(false);
+            button5.setClickable(false);
 
         } else {
             playYanlis();
@@ -221,10 +224,13 @@ public class MainActivity extends AppCompatActivity {
 
             textView6.setText("PUAN:" + puan);
 
+            button6.setClickable(false);
             button1.setClickable(false);
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            button.setClickable(false);
+            button5.setClickable(false);
 
         } else {
             playYanlis();
@@ -271,11 +277,13 @@ public class MainActivity extends AppCompatActivity {
             puan += 10;
 
             textView6.setText("PUAN:" + puan);
-
+            button6.setClickable(false);
             button1.setClickable(false);
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            button.setClickable(false);
+            button5.setClickable(false);
         } else {
             playYanlis();
             titrestir();
@@ -321,10 +329,13 @@ public class MainActivity extends AppCompatActivity {
 
             textView6.setText("PUAN:" + puan);
 
+            button6.setClickable(false);
             button1.setClickable(false);
             button2.setClickable(false);
             button3.setClickable(false);
             button4.setClickable(false);
+            button.setClickable(false);
+            button5.setClickable(false);
         } else {
             playYanlis();
             titrestir();
@@ -381,14 +392,15 @@ public class MainActivity extends AppCompatActivity {
         button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
         button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
         button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
-
+        button.setClickable(true);
         button.setClickable(true);
         button5.setClickable(true);
         button1.setClickable(true);
         button2.setClickable(true);
         button3.setClickable(true);
         button4.setClickable(true);
-
+        button6.setClickable(true);
+        button5.setClickable(true);
         liste.SoruCevapSil(rnd);
         sorularSize--;
 
