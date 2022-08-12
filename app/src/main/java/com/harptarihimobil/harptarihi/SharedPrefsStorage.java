@@ -21,4 +21,20 @@ public class SharedPrefsStorage {
         return sharedPreferences.getString("username", "");
     }
 
+    public int getHighScore() {
+        return sharedPreferences.getInt("high_score", -1);
+    }
+
+    public void saveHighScore(int score) {
+        int currentScore = getHighScore();
+
+        if (score > currentScore) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("high_score", score);
+            editor.apply();
+        }
+
+
+    }
+
 }

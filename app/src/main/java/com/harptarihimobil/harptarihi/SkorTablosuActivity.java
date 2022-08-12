@@ -1,6 +1,5 @@
 package com.harptarihimobil.harptarihi;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +25,7 @@ public class SkorTablosuActivity extends AppCompatActivity {
     private ActivitySkorTablosuBinding binding;
 
     private ScoreFirebaseDatabase database;
+    private SharedPrefsStorage sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,11 @@ public class SkorTablosuActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         database = new ScoreFirebaseDatabase(this);
+        sharedPrefs = new SharedPrefsStorage(this);
+
+        if (sharedPrefs.getHighScore() != -1) {
+            binding.tvEnYuksekPuan.setText(sharedPrefs.getHighScore() + " Puan");
+        }
 
         getHighScores();
     }
@@ -60,13 +65,8 @@ public class SkorTablosuActivity extends AppCompatActivity {
         });
     }
 
-    public void geridön(View view){
-
-
+    public void geriDon(View view) {
         finish();
-
-
-
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -99,7 +99,6 @@ public class SkorTablosuActivity extends AppCompatActivity {
             index++;
         }
     }
-
 
 
     private static <K, V> Map<K, V> sortByValue(Map<K, V> map) {
