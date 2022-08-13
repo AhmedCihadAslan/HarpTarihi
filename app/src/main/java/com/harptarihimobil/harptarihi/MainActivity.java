@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
             switch (Dogru.get(rnd)) {
                 case "D":
-                    button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
                     break;
                 case "B":
                     button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                     button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
                     break;
                 case "D":
-                    button2.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
+                    button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
                     break;
                 case "C":
                     button3.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
