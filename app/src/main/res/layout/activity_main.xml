@@ -175,6 +175,8 @@
         android:id="@+id/button_siradaki_soru"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/secenek"
         android:fontFamily="@font/soru_font"
         android:gravity="center"

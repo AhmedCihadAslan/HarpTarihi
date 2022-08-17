@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     TextView textView6;
-
     AppCompatImageView button;
     AppCompatTextView button1;
     AppCompatTextView button2;
@@ -56,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
     int rnd;
     int sorularSize;
     int puan;
+    int yarısilme;
+    int degıssilme;
+    int cvpgörsilme;
 
     AppCompatImageView imgYanlisCevap;
     AppCompatTextView textYanlisCevapUyari;
@@ -103,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         sorularSize = Sorular2.size();
 
         rnd = random.nextInt(sorularSize);
+        yarısilme =0;
+        cvpgörsilme = 0;
+        degıssilme = 0;
 
         SoruCevap();
 
@@ -112,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
     //**************************************************************************************************
 
     public void SoruCevap() {
+
         if (aynısoru == rnd) {
             rnd = random.nextInt(sorularSize);
         }
@@ -149,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //**************************************************************************************************
+
     public void A(View view) {
 
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
@@ -170,6 +177,7 @@ public class MainActivity extends AppCompatActivity {
             button5.setClickable(false);
 
         } else {
+
             playYanlis();
             titrestir();
 
@@ -415,6 +423,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void yarıyarıya(View view) {
 
+            yarısilme =1;
+
         if (Dogru.get(rnd).equals("A")) {
             button.setVisibility(View.INVISIBLE);
             button3.setVisibility(View.INVISIBLE);
@@ -442,6 +452,7 @@ public class MainActivity extends AppCompatActivity {
     public void degıstır(View view) {
         showInterstitialAd();
 
+        degıssilme = 1;
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
@@ -494,6 +505,7 @@ public class MainActivity extends AppCompatActivity {
     public void cevabıgor(View view) {
         playDogru();
         //#660099
+        cvpgörsilme = 1;
         button6.setVisibility(View.INVISIBLE);
         button1.setVisibility(View.VISIBLE);
         button2.setVisibility(View.VISIBLE);
@@ -655,6 +667,27 @@ public class MainActivity extends AppCompatActivity {
         textTekrarOyna.setVisibility(View.INVISIBLE);
         textAnaMenu.setVisibility(View.INVISIBLE);
         yanlisCevapTitle.setVisibility(View.INVISIBLE);
+
+        if(yarısilme == 1){
+
+            button.setVisibility(View.INVISIBLE);
+
+        }
+        if(cvpgörsilme == 1){
+
+            button6.setVisibility(View.INVISIBLE);
+
+        }
+        if(degıssilme == 1){
+
+            button5.setVisibility(View.INVISIBLE);
+
+
+
+        }
+
+
+
 
         button1.setClickable(true);
         button2.setClickable(true);
