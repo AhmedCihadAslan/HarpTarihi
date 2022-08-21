@@ -30,7 +30,9 @@ public class LoginActivity extends AppCompatActivity {
 
     public void giris(View view) {
         String username = Objects.requireNonNull(binding.edtUsername.getText()).toString();
+
         if (!username.isEmpty()) {
+
             sharedPrefsStorage.saveUsername(username);
 
             openAnaMenu();

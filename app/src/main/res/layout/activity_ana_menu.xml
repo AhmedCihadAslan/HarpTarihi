@@ -28,6 +28,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_oyna"
         android:layout_width="0dp"
@@ -50,8 +64,10 @@
         android:src="@drawable/text_oyna"
         app:layout_constraintBottom_toBottomOf="@id/img_oyna"
         app:layout_constraintEnd_toEndOf="@id/img_oyna"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/img_oyna"
-        app:layout_constraintTop_toTopOf="@id/img_oyna" />
+        app:layout_constraintTop_toTopOf="@id/img_oyna"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_joker_al"
@@ -65,7 +81,7 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toTopOf="@+id/img_siteye_git"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_oyna" />
 
@@ -91,7 +107,9 @@
         android:src="@drawable/siteye_git"
         app:layout_constraintBottom_toBottomOf="@id/img_siteye_git"
         app:layout_constraintEnd_toEndOf="@id/img_siteye_git"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/img_siteye_git"
-        app:layout_constraintTop_toTopOf="@id/img_siteye_git" />
+        app:layout_constraintTop_toTopOf="@id/img_siteye_git"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

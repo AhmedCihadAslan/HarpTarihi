@@ -77,7 +77,7 @@ public class Sorucevaplist {
         Cevaplistesi.add("Osman Gazi");
         Cevaplistesi.add("Murad Hüdavendigar");
 
-        DogruListesi.add("C");
+        DogruListesi.add("B");
 
 
         Sorulistesi.add("Armaları ve simgeleri inceleyen bilimin adı nedir?");
@@ -549,20 +549,337 @@ public class Sorucevaplist {
         DogruListesi.add("A");
 
 
-        Sorulistesi.add("İslam öncesi Türk topluluklarının dini inancı nedir?");
+        Sorulistesi.add("Tarihte kaç adet büyük Türk Devleti vardır?");
 
-        Cevaplistesi.add("İsevilik");
-        Cevaplistesi.add("Şintoizm");
-        Cevaplistesi.add("Tengrizm");
-        Cevaplistesi.add("Paganizm");
+        Cevaplistesi.add("14");
+        Cevaplistesi.add("18");
+        Cevaplistesi.add("16");
+        Cevaplistesi.add("21");
 
         DogruListesi.add("C");
 
 
 
+        Sorulistesi.add("Kürşad Ayaklanması'nda, Kürşad kaç asker ile birlikte Chiu-ch'eng Sarayı'na saldırmıştır?");
+
+        Cevaplistesi.add("40");
+        Cevaplistesi.add("30");
+        Cevaplistesi.add("500");
+        Cevaplistesi.add("41");
+
+        DogruListesi.add("A");
 
 
 
+        Sorulistesi.add("Kutalmış oğlu Süleyman Şah hangi devletin kurucusudur?");
+
+        Cevaplistesi.add("Gazneliler");
+        Cevaplistesi.add("Harezmşahlar");
+        Cevaplistesi.add("Anadolu Selçuklu");
+        Cevaplistesi.add("Akkoyunlular");
+
+        DogruListesi.add("C");
+
+
+        Sorulistesi.add("Osmanlı Devletinde yoksulların ve öğrencilerin de yararlandığı yerlere ne ad verilirdi?");
+
+        Cevaplistesi.add("Ribat");
+        Cevaplistesi.add("İmarethane");
+        Cevaplistesi.add("Dergah");
+        Cevaplistesi.add("Daru’ş Şifa");
+
+        DogruListesi.add("B");
+
+        Sorulistesi.add("Aşağıdaki olayların hangisi ile Osmanlılar Rumeli’ye ilk kez geçmişlerdir?");
+
+        Cevaplistesi.add("Bursa fethi");
+        Cevaplistesi.add("Edirne fethi");
+        Cevaplistesi.add("Çimpe fethi");
+        Cevaplistesi.add("Koyunhisar Savaşı");
+
+        DogruListesi.add("C");
+
+        Sorulistesi.add("Anadolu'da 2. beylikler döneminin başlamasına neden olan savaş hangisidir?");
+
+        Cevaplistesi.add("Kösedağ Savaşı");
+        Cevaplistesi.add("Maltepe Savaşı");
+        Cevaplistesi.add("Koyunhisar Savaşı");
+        Cevaplistesi.add("Malazgirt Savaşı");
+
+        DogruListesi.add("A");
+
+        Sorulistesi.add("Haçlılarla yapılan ilk savaş hangisidir?");
+
+        Cevaplistesi.add("I. Kosova Savaşı");
+        Cevaplistesi.add("Koyunhisar Savaşı");
+        Cevaplistesi.add("Sırpsındığı Savaşı");
+        Cevaplistesi.add("Sazlıdere Savaşı");
+
+        DogruListesi.add("C");
+
+        Sorulistesi.add("Osmanlı Devleti'ne katılan ilk beylik hangisidir?");
+
+        Cevaplistesi.add("Karesioğulları");
+        Cevaplistesi.add("Karamanoğulları");
+        Cevaplistesi.add("Hamitoğulları");
+        Cevaplistesi.add("Germiyanoğulları");
+
+        DogruListesi.add("A");
+
+        Sorulistesi.add("Fetret Devri hangi savaştan sonra yaşanmıştır?");
+
+        Cevaplistesi.add("Ankara Savaşı");
+        Cevaplistesi.add("Kösedağ Savaşı");
+        Cevaplistesi.add("Ridaniye Savaşı");
+        Cevaplistesi.add("Mohaç Meydan Muharebesi");
+
+        DogruListesi.add("A");
+
+        Sorulistesi.add("Hangisi Osmanlı Devleti'nde divan üyesi değildir?");
+
+        Cevaplistesi.add("Defterdar");
+        Cevaplistesi.add("Sadrazam");
+        Cevaplistesi.add("Vezir");
+        Cevaplistesi.add("Tımarlı Sipahi");
+
+        DogruListesi.add("D");
+
+        Sorulistesi.add("Hangisi Avrupa'da İslamiyeti kabul eden ilk Türk Devletidir?");
+
+        Cevaplistesi.add("İtil Bulgarları");
+        Cevaplistesi.add("Hazarlar");
+        Cevaplistesi.add("Peçenekler");
+        Cevaplistesi.add("Kıpçaklar");
+
+        DogruListesi.add("A");
+
+
+        Sorulistesi.add("Hangisi Hindistan'da kurulmuş Türk hanedanlarından birisidir?");
+
+        Cevaplistesi.add("Altın Orda Devleti");
+        Cevaplistesi.add("Babür İmparatorluğu");
+        Cevaplistesi.add("Kırım Kağanlığı");
+        Cevaplistesi.add("Tolunoğulları");
+
+        DogruListesi.add("B");
+
+
+        Sorulistesi.add("Kıbrıs Barış harekatı hangi tarihte gerçekleşmiştir?");
+
+        Cevaplistesi.add("1970");
+        Cevaplistesi.add("1972");
+        Cevaplistesi.add("1978");
+        Cevaplistesi.add("1974");
+
+        DogruListesi.add("D");
+
+
+        Sorulistesi.add("Cumhuriyetin ilan edildiği tarih nedir?");
+
+        Cevaplistesi.add("29 Ekim 1920");
+        Cevaplistesi.add("29 Ekim 1923");
+        Cevaplistesi.add("30 Ağustos 1923");
+        Cevaplistesi.add("23 Nisan 1920");
+
+        DogruListesi.add("B");
+
+
+        Sorulistesi.add("İstanbul'u toplam 4 kez kuşatmış olmasına rağmen fethedemeyen padişah hangisidir?");
+
+        Cevaplistesi.add("II. Murat");
+        Cevaplistesi.add("Yıldırım Beyazıt");
+        Cevaplistesi.add("II. Mehmet");
+        Cevaplistesi.add("Musa Çelebi");
+
+        DogruListesi.add("B");
+
+
+        Sorulistesi.add("Osmanlı Devleti hangi antlaşma ile fiilen sona ermiştir?");
+
+        Cevaplistesi.add("Sevr Antlaşması");
+        Cevaplistesi.add("Mondros Ateşkes Antlaşması");
+        Cevaplistesi.add("İstanbul Antlaşması");
+        Cevaplistesi.add("Lozan Antlaşması");
+
+        DogruListesi.add("B");
+
+
+        Sorulistesi.add("Müslümanlarla Mekkeli Kureyşliler arasındaki ilk savaş hangisidir?");
+
+        Cevaplistesi.add("Uhud Savaşı");
+        Cevaplistesi.add("Bedr Savaşı");
+        Cevaplistesi.add("Hendek Savaşı");
+        Cevaplistesi.add("Ayn Calut Savaşı");
+
+        DogruListesi.add("B");
+
+        //worlwaLL
+
+        Sorulistesi.add("Uhud savaşında hangisi şehit olmuştur?");
+
+        Cevaplistesi.add("Hz.Hamza");
+        Cevaplistesi.add("Hz.Ömer");
+        Cevaplistesi.add("Hz.Ebu Bekir");
+        Cevaplistesi.add("Hz.Ali");
+
+        DogruListesi.add("A");
+
+
+        Sorulistesi.add("Hangisi 4 halifeden biri değildir?");
+
+        Cevaplistesi.add("Hz.Hamza");
+        Cevaplistesi.add("Hz.Ömer");
+        Cevaplistesi.add("Hz.Ebu Bekir");
+        Cevaplistesi.add("Hz.Ali");
+
+        DogruListesi.add("A");
+
+        Sorulistesi.add("Bizans ile İslam Devleti arasındaki ilk savaş hangisidir?");
+
+        Cevaplistesi.add("Mute Savaşı");
+        Cevaplistesi.add("Firaz Savaşı");
+        Cevaplistesi.add("Hendek Savaşı");
+        Cevaplistesi.add("Konstantinopolis Kuşatması");
+
+        DogruListesi.add("A");
+
+        Sorulistesi.add("Kudüs hangi dönemde fethedilmiştir?");
+
+        Cevaplistesi.add("Hz.Ebu Bekir");
+        Cevaplistesi.add("Hz.Ali");
+        Cevaplistesi.add("Hz.Ömer");
+        Cevaplistesi.add("Hz.Muaviye");
+
+        DogruListesi.add("C");
+
+
+        Sorulistesi.add("'Yüz Yıl Savaşları' hangi iki büyük ülke arasında gerçekleşti?");
+
+        Cevaplistesi.add("Fransa-Genoa");
+        Cevaplistesi.add("Fransa-Bohemya");
+        Cevaplistesi.add("İngiltere-Fransa");
+        Cevaplistesi.add("İngiltere-Almanya");
+
+        DogruListesi.add("C");
+
+
+        Sorulistesi.add("Fransız hükümdarı olan, Kanuni Sultan Süleyman'la yaptığı ittifakla da bilinen kralın adı nedir?");
+
+        Cevaplistesi.add("I. Fransuva");
+        Cevaplistesi.add("II. Henry");
+        Cevaplistesi.add("Şarlken");
+        Cevaplistesi.add("I. Philip");
+
+        DogruListesi.add("A");
+
+
+
+        Sorulistesi.add("Kadeş Antlaşması hangi uygarlıklar arasında yapılmıştır?");
+
+        Cevaplistesi.add("Hititler-Mısırlılar");
+        Cevaplistesi.add("Hititler-Sümerler");
+        Cevaplistesi.add("Hititler-Lidyalılar");
+        Cevaplistesi.add("Sümerler-Mısırlılar");
+
+        DogruListesi.add("A");
+
+
+
+        Sorulistesi.add("Türkiye Cumhuriyeti'nin ilk başbakanı kimdir?");
+
+        Cevaplistesi.add("Ali Fethi Okyar");
+        Cevaplistesi.add("Celal Bayar");
+        Cevaplistesi.add("İsmet İnönü");
+        Cevaplistesi.add("Mustafa Kemal Atatürk");
+
+        DogruListesi.add("C");
+
+
+        Sorulistesi.add("Cumhuriyet tarihinin ilk kağıt parası ne zaman tedavüle girdi?");
+
+        Cevaplistesi.add("1923");
+        Cevaplistesi.add("1925");
+        Cevaplistesi.add("1927");
+        Cevaplistesi.add("1929");
+
+        DogruListesi.add("C");
+
+        Sorulistesi.add("Hatay Anavatan'a kaç yılında katılmıştır?");
+
+        Cevaplistesi.add("1923");
+        Cevaplistesi.add("1935");
+        Cevaplistesi.add("1939");
+        Cevaplistesi.add("1949");
+
+        DogruListesi.add("C");
+
+        Sorulistesi.add("Fatih Sultan Mehmet İstanbul'u fethettiğinde kaç yaşındaydı?");
+
+        Cevaplistesi.add("23");
+        Cevaplistesi.add("25");
+        Cevaplistesi.add("20");
+        Cevaplistesi.add("21");
+
+        DogruListesi.add("D");
+
+
+        Sorulistesi.add("Mustafa Kemal 'Geldikleri gibi giderler' sözünü ne zaman söylemiştir?");
+
+        Cevaplistesi.add("TBMM açılış konuşmasında");
+        Cevaplistesi.add("İstanbul işgal edilince");
+        Cevaplistesi.add("Çanakkale Savaşı'nda");
+        Cevaplistesi.add("I.İnönü Savaşı'nda");
+
+        DogruListesi.add("B");
+
+        Sorulistesi.add("Hangi ülke I.Dünya Savaşı'ndan sonra Türkiye'nin bir bölümünü işgal etmiştir?");
+
+        Cevaplistesi.add("İsveç");
+        Cevaplistesi.add("Fransa");
+        Cevaplistesi.add("İspanya");
+        Cevaplistesi.add("İsviçre");
+
+        DogruListesi.add("B");
+
+
+        Sorulistesi.add("Kurtuluş Savaşı'nda Doğu Cephesi komutanı kimdi?");
+
+        Cevaplistesi.add("İsmet İnönü");
+        Cevaplistesi.add("Enver Paşa");
+        Cevaplistesi.add("Kazım Karabekir");
+        Cevaplistesi.add("Talat Paşa");
+
+        DogruListesi.add("C");
+
+
+        Sorulistesi.add("Çift başlı kartal hangi devletin sembolüdür?");
+
+        Cevaplistesi.add("Selçuklular");
+        Cevaplistesi.add("Altın Orda Devleti");
+        Cevaplistesi.add("Çağatay Hanlığı");
+        Cevaplistesi.add("Osmanlı Devleti");
+
+        DogruListesi.add("A");
+
+
+        Sorulistesi.add("En kısa meydan muharebesi hangi savaştır?");
+
+        Cevaplistesi.add("Mohaç Savaşı");
+        Cevaplistesi.add("Waterloo Savaşı");
+        Cevaplistesi.add("Sebeş Savaşı");
+        Cevaplistesi.add("Hiçbiri");
+
+        DogruListesi.add("A");
+
+
+        Sorulistesi.add("En kısa meydan muharebesi kaç saat sürmüştür?");
+
+        Cevaplistesi.add("2");
+        Cevaplistesi.add("4");
+        Cevaplistesi.add("7");
+        Cevaplistesi.add("1");
+
+        DogruListesi.add("A");
 
 
 

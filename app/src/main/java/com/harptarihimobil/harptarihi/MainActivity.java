@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     int yarısilme;
     int degıssilme;
     int cvpgörsilme;
+    int cozulensoru;
 
     AppCompatImageView imgYanlisCevap;
     AppCompatTextView textYanlisCevapUyari;
@@ -108,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         yarısilme =0;
         cvpgörsilme = 0;
         degıssilme = 0;
+        cozulensoru =0;
 
         SoruCevap();
 
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
-        if (Dogru.get(rnd).equals("A")) {
+        if(Dogru.get(rnd).equals("A")) {
             playDogru();
 
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
@@ -376,6 +378,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void sıradakısoru(View view) {
         showInterstitialAd();
+
+        cozulensoru++;
+        if(cozulensoru % 10 == 0){
+
+            loadInterstitialAd();
+            mInterstitialAd.show(this);
+
+        }
+
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
@@ -415,6 +426,7 @@ public class MainActivity extends AppCompatActivity {
         if (aynısoru == rnd) {
             rnd = random.nextInt(sorularSize);
         }
+
 
         SoruCevap();
     }
@@ -574,6 +586,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void anaMenu(View view) {
+
+        loadInterstitialAd();
+        mInterstitialAd.show(this);
+
         int highScore = sharedPrefs.getHighScore();
 
         if (puan > highScore) {
@@ -628,7 +644,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showInterstitialAd() {
         if (mInterstitialAd != null) {
-            if (interstitialAdCount % 7 == 0) mInterstitialAd.show(this);
+            if (interstitialAdCount % 10 == 0) mInterstitialAd.show(this);
             interstitialAdCount++;
         } else loadInterstitialAd();
     }
