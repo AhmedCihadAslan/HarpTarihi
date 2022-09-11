@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
         aynısoru = rnd;
 
         int i = 0;
+
         while (i != Sorular2.size() + 1) {
 
             int a = i * 4;
