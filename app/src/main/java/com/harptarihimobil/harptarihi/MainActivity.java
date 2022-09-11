@@ -378,7 +378,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sıradakısoru(View view) {
-        showInterstitialAd();
+        showInterstitialAd(interstitialAdCount);
 
         cozulensoru++;
         if(cozulensoru % 10 == 0){
@@ -463,7 +463,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void degıstır(View view) {
-        showInterstitialAd();
+        showInterstitialAd(interstitialAdCount);
 
         degıssilme = 1;
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
@@ -587,9 +587,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void anaMenu(View view) {
-
-        loadInterstitialAd();
-        mInterstitialAd.show(this);
+        showInterstitialAd(10);
 
         int highScore = sharedPrefs.getHighScore();
 
@@ -616,7 +614,7 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();
 
-        RewardedAd.load(this, "ca-app-pub-3940256099942544/5224354917",
+        RewardedAd.load(this, "ca-app-pub-7801799448157966/4278628880",
                 adRequest, new RewardedAdLoadCallback() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
@@ -638,26 +636,26 @@ public class MainActivity extends AppCompatActivity {
 
         AdView bannerAd = new AdView(this);
         bannerAd.setAdSize(AdSize.BANNER);
-        bannerAd.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        bannerAd.setAdUnitId("ca-app-pub-7801799448157966/7895465335");
 
         loadInterstitialAd();
     }
 
-    private void showInterstitialAd() {
+    private void showInterstitialAd(int count) {
         if (mInterstitialAd != null) {
-            if (interstitialAdCount % 10 == 0) mInterstitialAd.show(this);
+            if (interstitialAdCount % 10 == 0 || count % 10 == 0) mInterstitialAd.show(this);
             interstitialAdCount++;
         } else loadInterstitialAd();
     }
 
 
     private void loadInterstitialAd() {
-        InterstitialAd.load(this, "ca-app-pub-3940256099942544/1033173712", adRequest,
+        InterstitialAd.load(this, "ca-app-pub-7801799448157966/6279131333", adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                         mInterstitialAd = interstitialAd;
-                        showInterstitialAd();
+                        showInterstitialAd(interstitialAdCount);
                     }
 
                     @Override
