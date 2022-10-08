@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Homelander/StudioProjects/HarpTarihi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3455" />
         <entry key="..\:/Users/Homelander/StudioProjects/HarpTarihi/app/src/main/res/layout/activity_ana_menu.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Homelander/StudioProjects/HarpTarihi/app/src/main/res/layout/activity_main.xml" value="0.2921195652173913" />
         <entry key="..\:/Users/Homelander/StudioProjects/HarpTarihi/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Homelander/StudioProjects/HarpTarihi/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3455" />
         <entry key="..\:/Users/ahmed cihad/AndroidStudioProjects/HarpTarihi/app/src/main/res/layout/activity_ana_menu.xml" value="0.2513586956521739" />
         <entry key="..\:/Users/ahmed cihad/AndroidStudioProjects/HarpTarihi/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/ahmed cihad/AndroidStudioProjects/HarpTarihi/app/src/main/res/layout/activity_skor_tablosu.xml" value="0.36666666666666664" />

@@ -3,6 +3,7 @@ package com.harptarihimobil.harptarihi;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -40,8 +41,9 @@ public class AnaMenuActivity extends AppCompatActivity {
         });
 
         binding.imgSiteyeGit.setOnClickListener(v -> {
-            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.harptarihi.net/"));
-            startActivity(intent);
+//            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.harptarihi.net/"));
+//            startActivity(intent);
+            Toast.makeText(this, "Çok yakında sizlerle.", Toast.LENGTH_SHORT).show();
         });
 
         binding.imgJokerAl.setOnClickListener(v -> {
