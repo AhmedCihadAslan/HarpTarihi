@@ -122,8 +122,6 @@ public class MainActivity extends AppCompatActivity {
         SoruCevap();
 
         startCountdown();
-
-        setmInterstitialAdListener();
     }
 
     private void startCountdown() {
@@ -763,6 +761,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                         mInterstitialAd = interstitialAd;
                         showInterstitialAd(interstitialAdCount);
+                        setmInterstitialAdListener();
                     }
 
                     @Override
