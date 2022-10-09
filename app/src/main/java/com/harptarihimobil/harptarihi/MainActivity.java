@@ -582,6 +582,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cevabıgor(View view) {
+        stopTimer();
+
         playDogru();
         //#660099
         cvpgörsilme = 1;
