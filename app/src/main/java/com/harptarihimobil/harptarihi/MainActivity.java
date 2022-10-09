@@ -5,10 +5,12 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -80,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
 
     //**************************************************************************************************
 
+    private CountDownTimer countDownTimer;
+    private boolean isRunning = false;
+    private ProgressBar progressBarCountdown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,14 +112,64 @@ public class MainActivity extends AppCompatActivity {
         sorularSize = Sorular2.size();
 
         rnd = random.nextInt(sorularSize);
-        yarısilme =0;
+        yarısilme = 0;
         cvpgörsilme = 0;
         degıssilme = 0;
-        cozulensoru =0;
+        cozulensoru = 0;
 
         SoruCevap();
 
+        startCountdown();
+    }
 
+    private void startCountdown() {
+        progressBarCountdown.setProgress(20);
+
+        countDownTimer = new CountDownTimer(20000L, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                progressBarCountdown.setProgress((int) (millisUntilFinished / 1000));
+            }
+
+            @Override
+            public void onFinish() {
+                button1.setClickable(false);
+                button2.setClickable(false);
+                button3.setClickable(false);
+                button4.setClickable(false);
+                buttonSiradakiSoru.setVisibility(View.INVISIBLE);
+
+                switch (Dogru.get(rnd)) {
+                    case "A":
+                        button1.setBackgroundDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.icon_dogru));
+                        break;
+                    case "B":
+                        button2.setBackgroundDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.icon_dogru));
+                        break;
+                    case "C":
+                        button3.setBackgroundDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.icon_dogru));
+                        break;
+                    case "D":
+                        button4.setBackgroundDrawable(ContextCompat.getDrawable(MainActivity.this, R.drawable.icon_dogru));
+                        break;
+                }
+
+                playYanlis();
+                titrestir();
+
+                delay();
+            }
+        };
+
+        countDownTimer.start();
+        isRunning = true;
+    }
+
+    private void stopTimer() {
+        if (isRunning) {
+            countDownTimer.cancel();
+            isRunning = false;
+        }
     }
 
     //**************************************************************************************************
@@ -160,10 +216,11 @@ public class MainActivity extends AppCompatActivity {
     //**************************************************************************************************
 
     public void A(View view) {
-
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
-        if(Dogru.get(rnd).equals("A")) {
+        stopTimer();
+
+        if (Dogru.get(rnd).equals("A")) {
             playDogru();
 
             button1.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.icon_dogru));
@@ -219,6 +276,8 @@ public class MainActivity extends AppCompatActivity {
     public void B(View view) {
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
 
+        stopTimer();
+
         if (Dogru.get(rnd).equals("B")) {
             playDogru();
 
@@ -270,8 +329,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void C(View view) {
-
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
+
+        stopTimer();
 
         if (Dogru.get(rnd).equals("C")) {
             playDogru();
@@ -323,6 +383,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void D(View view) {
         buttonSiradakiSoru.setVisibility(View.VISIBLE);
+
+        stopTimer();
 
         if (Dogru.get(rnd).equals("D")) {
             playDogru();
@@ -378,10 +440,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void sıradakısoru(View view) {
+        startCountdown();
         showInterstitialAd(interstitialAdCount);
 
         cozulensoru++;
-        if(cozulensoru % 10 == 0){
+        if (cozulensoru % 10 == 0) {
 
             loadInterstitialAd();
             mInterstitialAd.show(this);
@@ -436,7 +499,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void yarıyarıya(View view) {
 
-            yarısilme =1;
+        yarısilme = 1;
 
         if (Dogru.get(rnd).equals("A")) {
             button.setVisibility(View.INVISIBLE);
@@ -463,6 +526,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void degıstır(View view) {
+        stopTimer();
+        startCountdown();
+
         showInterstitialAd(interstitialAdCount);
 
         degıssilme = 1;
@@ -674,6 +740,7 @@ public class MainActivity extends AppCompatActivity {
         button4.setVisibility(View.VISIBLE);
         button5.setVisibility(View.VISIBLE);
         button6.setVisibility(View.VISIBLE);
+        progressBarCountdown.setVisibility(View.VISIBLE);
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
         textView6.setVisibility(View.VISIBLE);
 
@@ -683,25 +750,22 @@ public class MainActivity extends AppCompatActivity {
         textAnaMenu.setVisibility(View.INVISIBLE);
         yanlisCevapTitle.setVisibility(View.INVISIBLE);
 
-        if(yarısilme == 1){
+        if (yarısilme == 1) {
 
             button.setVisibility(View.INVISIBLE);
 
         }
-        if(cvpgörsilme == 1){
+        if (cvpgörsilme == 1) {
 
             button6.setVisibility(View.INVISIBLE);
 
         }
-        if(degıssilme == 1){
+        if (degıssilme == 1) {
 
             button5.setVisibility(View.INVISIBLE);
 
 
-
         }
-
-
 
 
         button1.setClickable(true);
@@ -733,6 +797,7 @@ public class MainActivity extends AppCompatActivity {
         textTekrarOyna.setVisibility(View.VISIBLE);
         textAnaMenu.setVisibility(View.VISIBLE);
         yanlisCevapTitle.setVisibility(View.VISIBLE);
+        progressBarCountdown.setVisibility(View.INVISIBLE);
     }
 
     public void playYanlis() {
@@ -811,6 +876,8 @@ public class MainActivity extends AppCompatActivity {
         textTekrarOyna = findViewById(R.id.buton_devam_et);
         textAnaMenu = findViewById(R.id.buton_ana_menu);
         yanlisCevapTitle = findViewById(R.id.text_yanlis_cevap_title);
+
+        progressBarCountdown = findViewById(R.id.progress_horizontal);
     }
 
 

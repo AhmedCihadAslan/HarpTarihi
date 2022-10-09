@@ -26,6 +26,17 @@
         app:layout_constraintTop_toBottomOf="@+id/buton_yari_yariya"
         tools:visibility="visible" />
 
+    <ProgressBar
+        android:id="@+id/progress_horizontal"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        android:max="20"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:progressDrawable="@drawable/bg_countdown_progress" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="0dp"
@@ -69,7 +80,7 @@
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/progress_horizontal"
         tools:text="Test"
         tools:visibility="visible" />
 
@@ -237,9 +248,9 @@
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
+        android:onClick="anaMenu"
         android:scaleType="fitXY"
         android:src="@drawable/buton_go_main_menu"
-        android:onClick="anaMenu"
         android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@id/guideline_vertical_center"
         app:layout_constraintStart_toStartOf="parent"
@@ -251,27 +262,25 @@
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
+        android:onClick="devamEt"
         android:scaleType="fitXY"
         android:src="@drawable/buton_devam_et"
-        android:onClick="devamEt"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guideline_vertical_center"
         app:layout_constraintTop_toBottomOf="@id/layout_yanlis_cevap_uyari"
         tools:visibility="gone" />
 
-    <com.google.android.gms.ads.AdView
-        xmlns:ads="http://schemas.android.com/apk/res-auto"
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintStart_toStartOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
+        android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="ca-app-pub-7801799448157966/7895465335">
-    </com.google.android.gms.ads.AdView>
+        ads:adUnitId="ca-app-pub-7801799448157966/7895465335"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"></com.google.android.gms.ads.AdView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
