@@ -20,9 +20,11 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
@@ -120,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         SoruCevap();
 
         startCountdown();
+
+        setmInterstitialAdListener();
     }
 
     private void startCountdown() {
@@ -670,6 +674,7 @@ public class MainActivity extends AppCompatActivity {
     public void devamEt(View view) {
         if (mRewardedAd != null) {
             Activity activityContext = MainActivity.this;
+            stopTimer();
             mRewardedAd.show(activityContext, rewardItem -> {
                 onRewardedAdFinished();
             });
@@ -711,9 +716,43 @@ public class MainActivity extends AppCompatActivity {
 
     private void showInterstitialAd(int count) {
         if (mInterstitialAd != null) {
-            if (interstitialAdCount % 10 == 0 || count % 10 == 0) mInterstitialAd.show(this);
+            if (interstitialAdCount % 10 == 0 || count % 10 == 0) {
+                mInterstitialAd.show(this);
+                stopTimer();
+            }
             interstitialAdCount++;
         } else loadInterstitialAd();
+    }
+
+    private void setmInterstitialAdListener() {
+        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+            @Override
+            public void onAdClicked() {
+                super.onAdClicked();
+            }
+
+            @Override
+            public void onAdDismissedFullScreenContent() {
+                super.onAdDismissedFullScreenContent();
+                startCountdown();
+            }
+
+            @Override
+            public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
+                super.onAdFailedToShowFullScreenContent(adError);
+            }
+
+            @Override
+            public void onAdImpression() {
+                super.onAdImpression();
+            }
+
+            @Override
+            public void onAdShowedFullScreenContent() {
+                super.onAdShowedFullScreenContent();
+                startCountdown();
+            }
+        });
     }
 
 
@@ -780,6 +819,8 @@ public class MainActivity extends AppCompatActivity {
         button4.setBackgroundDrawable(ContextCompat.getDrawable(this, R.drawable.secenek));
 
         SoruCevap();
+
+        startCountdown();
     }
 
     private void yanlis() {
