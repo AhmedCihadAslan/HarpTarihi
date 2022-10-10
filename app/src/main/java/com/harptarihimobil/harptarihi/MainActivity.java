@@ -121,12 +121,11 @@ public class MainActivity extends AppCompatActivity {
 
         SoruCevap();
 
+        setCountdown();
         startCountdown();
     }
 
-    private void startCountdown() {
-        progressBarCountdown.setProgress(20);
-
+    private void setCountdown() {
         countDownTimer = new CountDownTimer(20000L, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -162,9 +161,14 @@ public class MainActivity extends AppCompatActivity {
                 delay();
             }
         };
+    }
 
-        countDownTimer.start();
-        isRunning = true;
+    private void startCountdown() {
+        if(!isRunning) {
+            progressBarCountdown.setProgress(20);
+            countDownTimer.start();
+            isRunning = true;
+        }
     }
 
     private void stopTimer() {
@@ -445,14 +449,6 @@ public class MainActivity extends AppCompatActivity {
         startCountdown();
         showInterstitialAd(interstitialAdCount);
 
-        cozulensoru++;
-        if (cozulensoru % 10 == 0) {
-
-            loadInterstitialAd();
-            mInterstitialAd.show(this);
-
-        }
-
         buttonSiradakiSoru.setVisibility(View.INVISIBLE);
 
         button1.setVisibility(View.VISIBLE);
@@ -714,9 +710,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void showInterstitialAd(int count) {
         if (mInterstitialAd != null) {
-            if (interstitialAdCount % 10 == 0 || count % 10 == 0) {
+            if (interstitialAdCount % 3 == 0 || count % 3 == 0) {
                 mInterstitialAd.show(this);
-                stopTimer();
+                //setmInterstitialAdListener();
             }
             interstitialAdCount++;
         } else loadInterstitialAd();
@@ -760,8 +756,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                         mInterstitialAd = interstitialAd;
+                        //stopTimer();
                         showInterstitialAd(interstitialAdCount);
-                        setmInterstitialAdListener();
+                        //setmInterstitialAdListener();
                     }
 
                     @Override
@@ -922,5 +919,23 @@ public class MainActivity extends AppCompatActivity {
         progressBarCountdown = findViewById(R.id.progress_horizontal);
     }
 
+    @Override
+    protected void onDestroy() {
+        stopTimer();
+        stopPlayerDogru();
+        stopPlayerYanlis();
+        super.onDestroy();
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopTimer();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startCountdown();
+    }
 }
