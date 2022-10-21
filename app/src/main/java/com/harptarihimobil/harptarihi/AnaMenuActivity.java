@@ -32,7 +32,7 @@ public class AnaMenuActivity extends AppCompatActivity {
 
         AdView bannerAd = new AdView(this);
         bannerAd.setAdSize(AdSize.BANNER);
-        bannerAd.setAdUnitId("ca-app-pub-7801799448157966/7895465335");
+        bannerAd.setAdUnitId("ca-app-pub-7801799448157966/5481786844");
 
 
         binding.imgOyna.setOnClickListener(v -> {

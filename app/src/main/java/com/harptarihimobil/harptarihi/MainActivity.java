@@ -681,7 +681,7 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();
 
-        RewardedAd.load(this, "ca-app-pub-7801799448157966/4278628880",
+        RewardedAd.load(this, "ca-app-pub-7801799448157966/7119082397",
                 adRequest, new RewardedAdLoadCallback() {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
@@ -703,7 +703,7 @@ public class MainActivity extends AppCompatActivity {
 
         AdView bannerAd = new AdView(this);
         bannerAd.setAdSize(AdSize.BANNER);
-        bannerAd.setAdUnitId("ca-app-pub-7801799448157966/7895465335");
+        bannerAd.setAdUnitId("ca-app-pub-7801799448157966/5481786844");
 
         loadInterstitialAd();
     }
@@ -751,7 +751,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void loadInterstitialAd() {
-        InterstitialAd.load(this, "ca-app-pub-7801799448157966/6279131333", adRequest,
+        InterstitialAd.load(this, "ca-app-pub-7801799448157966/7693797469", adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
