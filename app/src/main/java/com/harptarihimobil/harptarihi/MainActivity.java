@@ -720,7 +720,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setmInterstitialAdListener() {
         mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-            @Override
+            @Override 
             public void onAdClicked() {
                 super.onAdClicked();
             }
