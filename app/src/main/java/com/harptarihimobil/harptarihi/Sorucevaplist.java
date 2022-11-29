@@ -2365,12 +2365,33 @@ public class Sorucevaplist {
         DogruListesi.add("A");
 
 
+        Sorulistesi.add("Türklerde yönetme yetkisinin tanrı tarafından verildiği inancı nedir?");
+
+        Cevaplistesi.add("Ud");
+        Cevaplistesi.add("Yuğ");
+        Cevaplistesi.add("Kut");
+        Cevaplistesi.add("Bed");
+
+        DogruListesi.add("C");
 
 
+        Sorulistesi.add("Eski Türklerin astronomiyle ilgilendiklerinin ispatı nedir?");
 
+        Cevaplistesi.add("Rumi Takvim");
+        Cevaplistesi.add("Celali Takvim");
+        Cevaplistesi.add("12 Hayvanlı Takvim");
+        Cevaplistesi.add("Miladi");
 
+        DogruListesi.add("C");
 
+        Sorulistesi.add("Türkler çadıra ne ad verir?");
 
+        Cevaplistesi.add("Yurt");
+        Cevaplistesi.add("Böz");
+        Cevaplistesi.add("Ostak");
+        Cevaplistesi.add("Kamdu");
+
+        DogruListesi.add("A");
 
 
 

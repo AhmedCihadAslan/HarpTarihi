@@ -1,11 +1,15 @@
 package com.harptarihimobil.harptarihi;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,17 +31,24 @@ public class SkorTablosuActivity extends AppCompatActivity {
     private ScoreFirebaseDatabase database;
     private SharedPrefsStorage sharedPrefs;
 
+    AppCompatTextView cekl;
+    String [] mail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySkorTablosuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        cekl = findViewById(R.id.button_cekılıs);
+        mail = new String[] {"harptarihimobil@gmail.com"};
+
         database = new ScoreFirebaseDatabase(this);
         sharedPrefs = new SharedPrefsStorage(this);
 
         if (sharedPrefs.getHighScore() != -1) {
             binding.tvEnYuksekPuan.setText(sharedPrefs.getHighScore() + " Puan");
+            binding.tvEnKullanCAd.setText(sharedPrefs.getUsername());
         }
 
         getHighScores();
@@ -117,4 +128,35 @@ public class SkorTablosuActivity extends AppCompatActivity {
 
         return result;
     }
+
+    public void cekk(View view){
+
+
+
+                sendMail(mail,"ÇEKİLİŞ");
+
+
+
+
+    }
+
+
+
+    private void sendMail(String [] email,String konu){
+
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"harptarihimobil@gmail.com"});
+        i.putExtra(Intent.EXTRA_SUBJECT, "Çekiliş");
+        i.putExtra(Intent.EXTRA_TEXT   , sharedPrefs.getUsername()+ " : "+ sharedPrefs.getHighScore());
+        try {
+            startActivity(Intent.createChooser(i, "Send mail..."));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(SkorTablosuActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+
 }

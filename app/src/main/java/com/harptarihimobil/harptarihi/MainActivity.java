@@ -710,7 +710,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showInterstitialAd(int count) {
         if (mInterstitialAd != null) {
-            if (interstitialAdCount % 3 == 0 || count % 3 == 0) {
+            if (interstitialAdCount % 10 == 0 || count % 10 == 0) {
                 mInterstitialAd.show(this);
                 //setmInterstitialAdListener();
             }
