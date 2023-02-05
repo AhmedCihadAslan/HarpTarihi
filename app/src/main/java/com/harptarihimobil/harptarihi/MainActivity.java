@@ -1,6 +1,5 @@
 package com.harptarihimobil.harptarihi;
 
-import android.app.Activity;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     AppCompatImageView textAnaMenu;
     AppCompatImageView yanlisCevapTitle;
 
-    private RewardedAd mRewardedAd;
+    private InterstitialAd mRewardedInterstitial;
     private InterstitialAd mInterstitialAd;
     private AdRequest adRequest;
 
@@ -164,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startCountdown() {
-        if(!isRunning) {
+        if (!isRunning) {
             progressBarCountdown.setProgress(20);
             countDownTimer.start();
             isRunning = true;
@@ -666,14 +665,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void devamEt(View view) {
-        if (mRewardedAd != null) {
-            Activity activityContext = MainActivity.this;
-            stopTimer();
-            mRewardedAd.show(activityContext, rewardItem -> {
-                onRewardedAdFinished();
-            });
+        showRewardedInterstitial();
+    }
+
+    private void showRewardedInterstitial() {
+        if (mRewardedInterstitial != null) {
+            setmInterstitialAdListener();
+            mRewardedInterstitial.show(this);
         } else {
-            Toast.makeText(MainActivity.this, "Reklam yüklenirken bir sorun oluştu.", Toast.LENGTH_SHORT).show();
+            loadRewardedInterstitial();
         }
     }
 
@@ -681,22 +681,8 @@ public class MainActivity extends AppCompatActivity {
         MobileAds.initialize(this);
         adRequest = new AdRequest.Builder().build();
 
-        RewardedAd.load(this, "ca-app-pub-7801799448157966/7119082397",
-                adRequest, new RewardedAdLoadCallback() {
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        mRewardedAd = null;
-                    }
-
-                    @Override
-                    public void onAdLoaded(@NonNull RewardedAd rewardedAd) {
-                        mRewardedAd = rewardedAd;
-                    }
-                });
-
         MobileAds.initialize(this, initializationStatus -> {
         });
-
 
         AdView bannerAdView = findViewById(R.id.adView);
         bannerAdView.loadAd(adRequest);
@@ -706,6 +692,7 @@ public class MainActivity extends AppCompatActivity {
         bannerAd.setAdUnitId("ca-app-pub-7801799448157966/5481786844");
 
         loadInterstitialAd();
+        loadRewardedInterstitial();
     }
 
     private void showInterstitialAd(int count) {
@@ -720,7 +707,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setmInterstitialAdListener() {
         mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
-            @Override 
+            @Override
             public void onAdClicked() {
                 super.onAdClicked();
             }
@@ -728,7 +715,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdDismissedFullScreenContent() {
                 super.onAdDismissedFullScreenContent();
-                startCountdown();
+                onRewardedAdFinished();
             }
 
             @Override
@@ -744,7 +731,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
-                startCountdown();
+                onRewardedAdFinished();
             }
         });
     }
@@ -764,6 +751,23 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                         mInterstitialAd = null;
+                    }
+                });
+    }
+
+    private void loadRewardedInterstitial() {
+        InterstitialAd.load(this, "ca-app-pub-7801799448157966/2370739786", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        mRewardedInterstitial = interstitialAd;
+                        setmInterstitialAdListener();
+                        showRewardedInterstitial();
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mRewardedInterstitial = null;
                     }
                 });
     }

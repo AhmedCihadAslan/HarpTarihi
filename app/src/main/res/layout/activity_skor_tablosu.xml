@@ -17,7 +17,7 @@
         android:gravity="center"
         android:onClick="cekk"
         android:layout_marginStart="8dp"
-        android:text=" ÇEKİLİŞE  KATIL"
+       android:text=" ÇEKİLİŞE  KATIL"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
