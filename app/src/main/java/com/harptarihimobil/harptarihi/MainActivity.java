@@ -731,7 +731,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
-                onRewardedAdFinished();
             }
         });
     }
