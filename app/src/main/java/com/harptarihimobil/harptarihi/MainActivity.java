@@ -665,6 +665,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void devamEt(View view) {
+        stopTimer();
         showRewardedInterstitial();
     }
 
@@ -716,6 +717,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAdDismissedFullScreenContent() {
                 super.onAdDismissedFullScreenContent();
                 onRewardedAdFinished();
+                startCountdown();
             }
 
             @Override
@@ -732,6 +734,7 @@ public class MainActivity extends AppCompatActivity {
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
                 onRewardedAdFinished();
+                startCountdown();
             }
         });
     }
