@@ -693,7 +693,6 @@ public class MainActivity extends AppCompatActivity {
         bannerAd.setAdUnitId("ca-app-pub-7801799448157966/5481786844");
 
         loadInterstitialAd();
-        loadRewardedInterstitial();
     }
 
     private void showInterstitialAd(int count) {
@@ -707,7 +706,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setmInterstitialAdListener() {
-        mInterstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+        mRewardedInterstitial.setFullScreenContentCallback(new FullScreenContentCallback() {
             @Override
             public void onAdClicked() {
                 super.onAdClicked();
@@ -717,7 +716,6 @@ public class MainActivity extends AppCompatActivity {
             public void onAdDismissedFullScreenContent() {
                 super.onAdDismissedFullScreenContent();
                 onRewardedAdFinished();
-                startCountdown();
             }
 
             @Override
@@ -734,7 +732,6 @@ public class MainActivity extends AppCompatActivity {
             public void onAdShowedFullScreenContent() {
                 super.onAdShowedFullScreenContent();
                 onRewardedAdFinished();
-                startCountdown();
             }
         });
     }
@@ -827,6 +824,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void yanlis() {
+        stopTimer();
         textView.setVisibility(View.INVISIBLE);
         button.setVisibility(View.INVISIBLE);
         button1.setVisibility(View.INVISIBLE);
