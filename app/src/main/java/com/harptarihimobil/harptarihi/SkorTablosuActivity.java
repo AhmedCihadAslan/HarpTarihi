@@ -3,6 +3,7 @@ package com.harptarihimobil.harptarihi;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -61,7 +62,10 @@ public class SkorTablosuActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 TreeMap<String, Integer> items = new TreeMap<>();
                 for (DataSnapshot dsp : dataSnapshot.getChildren()) {
-                    items.put(String.valueOf(dsp.getKey()), dsp.getValue(Integer.class));
+                    try {
+                        items.put(String.valueOf(dsp.getKey()), dsp.getValue(Integer.class));
+                    } catch (Exception e) {}
+
                 }
 
                 Map<String, Integer> items2 = sortByValue(items);
